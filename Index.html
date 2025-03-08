@@ -11,16 +11,31 @@
         body {
             transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #f4f4f4, #ddd);
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Canvas for falling binary effect */
+        #matrixCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Places the animation behind content */
+            background: black;
         }
 
         .content {
-            flex: 1; /* Pushes the footer down */
+            flex: 1;
+            position: relative;
+            z-index: 1;
+            color: white;
+            text-align: center;
         }
 
         .fade-in {
@@ -102,8 +117,10 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px;
-            background: #222;
+            background: rgba(34, 34, 34, 0.9);
             color: white;
+            position: relative;
+            z-index: 1;
         }
 
         .nav-container {
@@ -116,12 +133,16 @@
         footer {
             text-align: center;
             padding: 10px;
-            background: #222;
+            background: rgba(34, 34, 34, 0.9);
             color: white;
+            position: relative;
+            z-index: 1;
         }
     </style>
 </head>
 <body>
+
+    <canvas id="matrixCanvas"></canvas> <!-- Background Animation -->
 
     <header>
         <h1 class="fade-in">POP Learning Hub</h1>
@@ -147,13 +168,6 @@
                             <li><a href="program3.html">Program 3</a></li>
                             <li><a href="program4.html">Program 4</a></li>
                             <li><a href="program5.html">Program 5</a></li>
-                            <li><a href="program6.html">Program 6</a></li>
-                            <li><a href="program7.html">Program 7</a></li>
-                            <li><a href="program8.html">Program 8</a></li>
-                            <li><a href="program9.html">Program 9</a></li>
-                            <li><a href="program10.html">Program 10</a></li>
-                            <li><a href="program11.html">Program 11</a></li>
-                            <li><a href="program12.html">Program 12</a></li>
                         </ul>
                     </li>
                     <li><a href="#" onclick="openCodeCompiler()">Code Compiler</a></li>
@@ -186,6 +200,46 @@
         function openCodeCompiler() {
             window.open('code-compiler.html', '_blank');
         }
+
+        // Falling Binary Effect
+        const canvas = document.getElementById("matrixCanvas");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const columns = Math.floor(canvas.width / 20);
+        const drops = Array(columns).fill(0);
+
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = "#0F0";
+            ctx.font = "20px monospace";
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = Math.random() > 0.5 ? "0" : "1";
+                ctx.fillText(text, i * 20, drops[i] * 20);
+
+                if (drops[i] * 20 > canvas.height && Math.random() > 0.95) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        function animate() {
+            drawMatrix();
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
     </script>
 
 </body>
