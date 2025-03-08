@@ -1,4 +1,4 @@
-/* Default Light Mode Styles */
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,9 +6,10 @@ body {
     background-color: #f4f4f4;
     color: #333;
     text-align: center;
-    transition: background 0.3s, color 0.3s;
+    transition: background 0.4s, color 0.4s;
 }
 
+/* Header Styling */
 header {
     background: #007bff;
     color: white;
@@ -16,8 +17,14 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
+h1 {
+    margin: 0;
+}
+
+/* Navigation Styling */
 nav ul {
     list-style: none;
     padding: 0;
@@ -33,8 +40,15 @@ nav ul li a {
     color: white;
     text-decoration: none;
     font-size: 18px;
+    transition: color 0.3s, transform 0.3s;
 }
 
+nav ul li a:hover {
+    color: #ffdd57;
+    transform: scale(1.1);
+}
+
+/* Dark Mode Button */
 button#theme-toggle {
     background: white;
     border: none;
@@ -42,12 +56,41 @@ button#theme-toggle {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    transition: background 0.3s, transform 0.3s;
 }
 
-section {
+button#theme-toggle:hover {
+    background: #ddd;
+    transform: scale(1.05);
+}
+
+/* Main Section Styling */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    max-width: 900px;
+}
+
+/* Card Styling */
+.card {
+    background: white;
     padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 90%;
+    max-width: 800px;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer Styling */
 footer {
     background: #333;
     color: white;
@@ -55,7 +98,7 @@ footer {
     margin-top: 20px;
 }
 
-/* Dark Mode Styles (Applied when class is added) */
+/* Dark Mode Styling */
 .dark-mode {
     background-color: #121212;
     color: #ffffff;
@@ -65,6 +108,11 @@ footer {
     background: #1a1a1a;
 }
 
+.dark-mode .card {
+    background: #1e1e1e;
+    color: white;
+}
+
 .dark-mode footer {
     background: #1a1a1a;
 }
@@ -72,4 +120,23 @@ footer {
 .dark-mode button#theme-toggle {
     background: #333;
     color: white;
+}
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s forwards;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
