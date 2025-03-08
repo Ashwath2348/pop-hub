@@ -50,3 +50,54 @@
         
         <h2>Code:</h2>
         <pre>
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#include <conio.h> void main()
+{
+int n, a[100], i, key, high, low, mid, loc=-1; clrscr( );
+printf("Enter the size of the array\n"); scanf("%d",&n);
+printf("Enter the elements of array in sorted order\n"); for(i=0;i<n;i++)
+scanf("%d",&a[i]);
+printf("Enter the key element to be searched\n"); scanf("%d",&key);
+low=0; high=n-1;
+while(low<=high)
+{
+mid=(low+high)/2; if(key= =a[mid])
+{
+loc = mid+1; break;
+}
+else
+{
+if(key<a[mid]) high=mid-1; else low=mid+1;
+}
+}
+if(loc>0)
+printf("\n The element %d is found at %d ",key,loc);
+else
+printf("\nThe search is unsuccessful"); getch();
+}
+      </pre>
+        
+        <h2>Output:</h2>
+        <pre>
+            OUTPUT
+First Run:
+Enter the size of the array 5
+Enter the elements of array in sorted order 10 20
+30
+40
+50
+Enter the element to be searched 40 The element 40 is found at 4 Second Run:
+Enter the size of the array 4
+Enter the elements of array in sorted order 4
+6
+8
+9
+Enter the key element to be searched 2
+The search is unsuccessful
+            </pre>
+        
+        <button onclick="window.location.href='index.html'">⬅ Back to Home</button>
+    </div>
+</body>
+</html>
