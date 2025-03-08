@@ -177,4 +177,50 @@
                             <li><a href="program9.html">Program 9</a></li>
                             <li><a href="program10.html">Program 10</a></li>
                             <li><a href="program11.html">Program 11</a></li>
-                            <li><a href="program12.html"
+                            <li><a href="program12.html">Program 12</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" onclick="openCodeCompiler()">Try it Yourself</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="content">
+        <section id="notes" class="content-section fade-in">
+            <h2>Study Notes</h2>
+            <p>Comprehensive notes on POP concepts from the VTU syllabus.</p>
+        </section>
+
+        <section id="programs" class="content-section fade-in">
+            <h2>Programs & Outputs</h2>
+            <p>Collection of POP programs with explanations and outputs.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 POP Learning Hub</p>
+    </footer>
+
+    <script>
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function openCodeCompiler() {
+            window.open('code-compiler.html', '_blank');
+        }
+
+        // Scroll animations trigger
+        window.addEventListener('scroll', () => {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(element => {
+                if (element.getBoundingClientRect().top < window.innerHeight) {
+                    element.classList.add('fade-in');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
