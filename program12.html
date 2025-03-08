@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program 1 - POP Learning Hub</title>
+    <title>Program 1 - WRITE A C PROGRAM TO COPY A TEXT FILE TO ANOTHER, READ BOTH THE INPUT
+FILE NAME AND TARGET FILE NAME</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
@@ -45,8 +46,68 @@
 </head>
 <body>
     <div class="container">
-        <h1>Program 1: Sample POP Program</h1>
+        <h1>Program 12:WRITE A C PROGRAM TO COPY A TEXT FILE TO ANOTHER, READ BOTH THE INPUT
+FILE NAME AND TARGET FILE NAME. </h1>
         <p><strong>Description:</strong> This program demonstrates a basic implementation of an array traversal.</p>
         
         <h2>Code:</h2>
         <pre>
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+void main()
+{
+FILE *fptr1, *fptr2;
+char ch, fname1[20], fname2[20];
+clrscr();
+printf("\n\n Copy a file in another name :\n");
+printf(" \n");
+printf(" Input the source file name : ");
+scanf("%s",fname1);
+fptr1=fopen(fname1, "r");
+if(fptr1==NULL)
+{
+printf(" File does not found or error in opening.!!");
+exit(1);
+}
+printf(" Input the new file name : ");
+scanf("%s",fname2);
+fptr2=fopen(fname2, "w");
+if(fptr2==NULL)
+{
+printf(" File does not found or error in opening.!!");
+fclose(fptr1);
+exit(2);
+}
+while(1)
+{
+ch=fgetc(fptr1);
+if(ch==EOF)
+{
+break;
+}
+else
+{
+fputc(ch, fptr2);
+}
+}
+printf(" The file %s copied successfully in the file %s. \n\n",fname1,fname2);
+fclose(fptr1);
+fclose(fptr2);
+getchar();
+}
+     </pre>
+        
+        <h2>Output:</h2>
+        <pre>
+            OUTPUT:
+Copy a file in another name :
+Input the source file name : test.txt
+Input the new file name : test1.txt
+The file test.txt copied successfully in the file test1.txt.
+             </pre>
+        
+        <button onclick="window.location.href='index.html'">⬅ Back to Home</button>
+    </div>
+</body>
+</html>
