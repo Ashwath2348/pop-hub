@@ -1,15 +1,14 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program 1 - POP Learning Hub</title>
+    <title>Quadratic Equation Solver - POP Learning Hub</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #f4f4f4, #ddd);
+            background: #f4f4f4;
             padding: 20px;
             text-align: center;
         }
@@ -19,7 +18,7 @@
             background: white;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         pre {
             background: #222;
@@ -29,8 +28,8 @@
             text-align: left;
             overflow-x: auto;
         }
-        button {
-            margin-top: 20px;
+        .copy-btn {
+            margin-top: 10px;
             padding: 10px 20px;
             border: none;
             background: #007bff;
@@ -38,15 +37,94 @@
             cursor: pointer;
             border-radius: 5px;
         }
-        button:hover {
+        .copy-btn:hover {
             background: #0056b3;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Program 1: Sample POP Program</h1>
-        <p><strong>Description:</strong> This program demonstrates a basic implementation of an array traversal.</p>
+        <h1>Program 1: Quadratic Equation Solver</h1>
+        <p><strong>Description:</strong> This program computes the roots of a quadratic equation.</p>
         
         <h2>Code:</h2>
+        <pre id="code">
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+#include &lt;math.h&gt;
+#include &lt;stdlib.h&gt;
+
+void main() {
+    float a, b, c, root1, root2, realp, imagp, disc;
+    clrscr();
+    printf("\n Enter the value of coefficient a: ");
+    scanf("%f", &a);
+    if (a == 0) {
+        printf("\n Invalid input...Retry again");
+        exit(0);
+    }
+    printf(" Enter the value of coefficients b and c:\n ");
+    scanf("%f%f", &b, &c);
+    
+    disc = b * b - 4 * a * c; // compute discriminant
+    if (disc == 0) {
+        printf("The roots are real and equal\n");
+        root1 = root2 = -b / (2.0 * a);
+        printf(" Root1 = Root2 = %.2f\n", root1);
+    } else if (disc > 0) {
+        printf("The roots are real and distinct\n");
+        root1 = (-b + sqrt(disc)) / (2.0 * a);
+        root2 = (-b - sqrt(disc)) / (2.0 * a);
+        printf("Root1 = %.2f\n", root1);
+        printf("Root2 = %.2f\n", root2);
+    } else {
+        printf("The roots are complex\n");
+        realp = -b / (2.0 * a);
+        disc = -disc;
+        imagp = sqrt(disc) / (2.0 * a);
+        printf("Root1 = %.2f + i%.2f\n", realp, imagp);
+        printf("Root2 = %.2f - i%.2f\n", realp, imagp);
+    }
+    getch();
+}
+        </pre>
+        <button class="copy-btn" onclick="copyCode()">Copy Code</button>
+
+        <h2>Output:</h2>
         <pre>
+First Run:
+Enter the value of coefficient a: 1
+Enter the value of coefficients b and c: 4 4
+The roots are real and equal
+Root1 = Root2 = -2.00
+
+Second Run:
+Enter the value of coefficient a: 1
+Enter the value of coefficients b and c: -7 10
+The roots are real and distinct
+Root1 = 5.00
+Root2 = 2.00
+
+Third Run:
+Enter the value of coefficient a: 2
+Enter the value of coefficients b and c: -3 6
+The roots are complex
+Root1 = 0.75 + i1.56
+Root2 = 0.75 - i1.56
+
+Fourth Run:
+Enter the value of coefficient a: 0
+Invalid input...Retry again
+        </pre>
+    </div>
+
+    <script>
+        function copyCode() {
+            const codeBlock = document.getElementById("code").innerText;
+            navigator.clipboard.writeText(codeBlock).then(() => {
+                alert("Code copied to clipboard!");
+            });
+        }
+    </script>
+</body>
+</html>
