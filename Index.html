@@ -36,9 +36,14 @@
 
         .navbar li {
             margin: 0 15px;
+            position: relative;
         }
         .navbar li a {
             transition: background 0.3s, transform 0.3s;
+            text-decoration: none;
+            color: black;
+            padding: 8px 12px;
+            display: block;
         }
 
         .navbar li a:hover {
@@ -50,12 +55,28 @@
             position: absolute;
             background: #444;
             box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
-            transition: opacity 0.3s ease-in-out;
+            list-style: none;
+            padding: 10px 0;
+            min-width: 150px;
+            z-index: 1000;
+        }
+
+        .dropdown-menu li {
+            padding: 5px 15px;
+        }
+
+        .dropdown-menu li a {
+            color: white;
+            display: block;
+            padding: 5px 10px;
+        }
+
+        .dropdown-menu li a:hover {
+            background: #555;
         }
 
         .dropdown:hover .dropdown-menu {
             display: block;
-            opacity: 1;
         }
 
         header {
@@ -97,7 +118,6 @@
                             <li><a href="program3.html">Program 3</a></li>
                             <li><a href="program4.html">Program 4</a></li>
                             <li><a href="program5.html">Program 5</a></li>
-                            
                             <li><a href="program6.html">Program 6</a></li>
                             <li><a href="program7.html">Program 7</a></li>
                             <li><a href="program8.html">Program 8</a></li>
