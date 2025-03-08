@@ -59,12 +59,13 @@
             color: white;
             padding: 12px 16px;
             text-decoration: none;
-            transition: background 0.3s, transform 0.3s;
+            transition: background 0.3s, transform 0.3s, color 0.3s;
         }
 
         .navbar li a:hover {
             transform: scale(1.1);
             background: #555;
+            color: #ff9d00; /* Accent color on hover */
         }
 
         .dropdown-menu {
@@ -86,6 +87,7 @@
             color: white;
             display: block;
             padding: 10px;
+            transition: background 0.3s;
         }
 
         .dropdown-menu li a:hover {
@@ -112,6 +114,34 @@
             justify-content: center;
         }
 
+        .typing {
+            display: inline-block;
+            font-size: 2em;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #ff9d00;
+            border-right: 2px solid #ff9d00;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            animation: typing 3s steps(20) forwards, blink 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+
         /* Footer Styling */
         footer {
             text-align: center;
@@ -119,12 +149,30 @@
             background: #222;
             color: white;
         }
+
+        /* Scroll Animations */
+        .scroll-fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease-out forwards;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <h1 class="fade-in">POP Learning Hub</h1>
+        <h1 class="fade-in typing">POP Learning Hub</h1>
         <div class="nav-container">
             <nav>
                 <ul class="navbar">
@@ -156,19 +204,19 @@
                             <li><a href="program12.html">Program 12</a></li>
                         </ul>
                     </li>
-                    <li><a href="#" onclick="try it your self()">try it your self</a></li>
+                    <li><a href="#" onclick="openCodeCompiler()">Try it Yourself</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <div class="content">
-        <section id="notes" class="fade-in">
+        <section id="notes" class="scroll-fade-up">
             <h2>Study Notes</h2>
             <p>Comprehensive notes on POP concepts from the VTU syllabus.</p>
         </section>
 
-        <section id="programs" class="fade-in">
+        <section id="programs" class="scroll-fade-up">
             <h2>Programs & Outputs</h2>
             <p>Collection of POP programs with explanations and outputs.</p>
         </section>
@@ -186,6 +234,16 @@
         function openCodeCompiler() {
             window.open('code-compiler.html', '_blank');
         }
+
+        // Scroll animations trigger
+        window.addEventListener('scroll', () => {
+            const elements = document.querySelectorAll('.scroll-fade-up');
+            elements.forEach(element => {
+                if (element.getBoundingClientRect().top < window.innerHeight) {
+                    element.classList.add('fade-in');
+                }
+            });
+        });
     </script>
 
 </body>
