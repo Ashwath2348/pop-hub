@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     themeToggle.addEventListener("click", function () {
+        body.classList.add("theme-transition");
         body.classList.toggle("dark-mode");
 
         // Update button text based on theme
@@ -19,6 +20,10 @@ document.addEventListener("DOMContentLoaded", function () {
             themeToggle.textContent = "🌙 Dark Mode";
             localStorage.setItem("theme", "light");
         }
+
+        setTimeout(() => {
+            body.classList.remove("theme-transition");
+        }, 500);
     });
 
     console.log("POP Learning Hub loaded successfully!");
