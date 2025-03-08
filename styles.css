@@ -55,7 +55,7 @@ footer {
     margin-top: 20px;
 }
 
-/* Dark Mode Styles */
+/* Dark Mode Styles (Applied when class is added) */
 .dark-mode {
     background-color: #121212;
     color: #ffffff;
