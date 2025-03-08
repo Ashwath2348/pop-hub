@@ -1,74 +1,42 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POP Learning Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>POP Learning Hub</h1>
+        <nav>
+            <ul>
+                <li><a href="#notes">Study Notes</a></li>
+                <li><a href="#programs">Programs & Outputs</a></li>
+                <li><a href="#blog">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="notes">
+        <h2>Study Notes</h2>
+        <p>Comprehensive notes on POP concepts from the VTU syllabus.</p>
+    </section>
 
-const Home = () => (
-  <div className="p-6 text-center">
-    <h1 className="text-3xl font-bold">POP Learning Platform</h1>
-    <p className="mt-2 text-lg">Learn Principles of Programming with VTU syllabus programs.</p>
-    <Button className="mt-4" asChild>
-      <Link to="/programs">View Programs</Link>
-    </Button>
-  </div>
-);
+    <section id="programs">
+        <h2>Programs & Outputs</h2>
+        <p>Collection of POP programs with explanations and outputs.</p>
+    </section>
 
-const programs = [
-  { id: 1, title: "Functions in C", code: "// C Code for Functions..." },
-  { id: 2, title: "Pointers in C", code: "// C Code for Pointers..." },
-  { id: 3, title: "File Handling in C", code: "// C Code for File Handling..." }
-];
+    <section id="blog">
+        <h2>Blog</h2>
+        <p>Latest discussions, tips, and tricks in POP.</p>
+    </section>
 
-const ProgramList = () => (
-  <div className="p-6">
-    <h2 className="text-2xl font-semibold">POP Programs</h2>
-    <div className="grid gap-4 mt-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-      {programs.map((program) => (
-        <motion.div whileHover={{ scale: 1.05 }} key={program.id}>
-          <Card>
-            <CardContent className="p-4">
-              <h3 className="text-xl font-semibold">{program.title}</h3>
-              <Button className="mt-2" asChild>
-                <Link to={`/program/${program.id}`}>View Code</Link>
-              </Button>
-            </CardContent>
-          </Card>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-);
+    <footer>
+        <p>&copy; 2025 POP Learning Hub</p>
+    </footer>
 
-const ProgramDetail = ({ id }) => {
-  const program = programs.find((p) => p.id === parseInt(id));
-  return program ? (
-    <div className="p-6">
-      <h2 className="text-2xl font-semibold">{program.title}</h2>
-      <pre className="mt-4 p-4 bg-gray-800 text-white rounded-lg">
-        {program.code}
-      </pre>
-      <Button className="mt-4" asChild>
-        <Link to="/programs">Back to Programs</Link>
-      </Button>
-    </div>
-  ) : (
-    <p className="p-6 text-center text-red-500">Program not found</p>
-  );
-};
-
-const App = () => (
-  <Router>
-    <nav className="p-4 bg-blue-600 text-white flex gap-4">
-      <Link to="/">Home</Link>
-      <Link to="/programs">Programs</Link>
-    </nav>
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/programs" element={<ProgramList />} />
-      <Route path="/program/:id" element={<ProgramDetail />} />
-    </Routes>
-  </Router>
-);
-
-export default App;
+    <script src="script.js"></script>
+</body>
+</html>
