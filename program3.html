@@ -50,3 +50,32 @@
         
         <h2>Code:</h2>
         <pre>
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+void main()
+{
+char name[10];
+float unit, amt;
+clrscr();
+printf("Enter your name and unit Consumed:");
+scanf("%s %f",name,&unit);
+if(unit<=200)
+amt=unit*0.80+100;
+else if((unit>200)&&(unit<=300))
+amt=200*0.80+((unit-200)*0.90)+100;
+else
+amt=200*0.80+100*0.90+((unit-300)*1)+100;
+if(amt>400)
+amt=1.15*amt;
+printf("Name: %s\n Unit=%f \n charge=%f ",name,unit,amt);
+getch();
+}
+    </pre>
+        
+        <h2>Output:</h2>
+        <pre>
+            First Run:
+Enter your name and unit Consumed: Siri 52Name: Siri
+Unit=52 charge=141.600000Second Run:
+Enter your name and unit Consumed: Rajesh 460Name: Rajesh
+Unit=460 charge=586.500000
