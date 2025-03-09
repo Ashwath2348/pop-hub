@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>C Compiler</title>
+    <title>C Compiler - Try it Yourself</title>
     <link rel="icon" href="images/pop-logo.ico" type="image/x-icon">
     <style>
         body {
@@ -95,27 +95,19 @@
                 return;
             }
 
-            // Send the code to the backend for compilation (this is just a mock-up)
+            // Simulating a delay like actual compilation
             output.textContent = "Compiling...\nPlease wait...";
 
-            // Simulate a delay like actual compilation
             setTimeout(() => {
-                // Example of calling backend API to compile the code
-                fetch('/compile', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ code: code })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    output.textContent = data.result || "An error occurred during compilation.";
-                })
-                .catch(error => {
-                    output.textContent = `Error: ${error.message}`;
-                });
-            }, 2000);
+                // Mocking a successful output, as if the code was compiled
+                const fakeOutput = `
+Hello, World!
+This is the result of your C program.
+
+Hello, world!
+                `;
+                output.textContent = fakeOutput;
+            }, 2000); // Simulating compilation delay
         }
     </script>
 
