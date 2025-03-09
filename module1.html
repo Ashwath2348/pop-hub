@@ -10,15 +10,25 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        main {
+            width: 80%;
+            max-width: 1200px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         header {
             background-color: #333;
             color: #fff;
             padding: 20px;
             text-align: center;
-        }
-        main {
-            padding: 20px;
+            border-radius: 8px;
         }
         section {
             margin-bottom: 40px; /* Gap between sections */
@@ -52,19 +62,20 @@
             padding: 20px;
             background-color: #333;
             color: white;
+            border-radius: 8px;
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Programming Concepts: OOP vs POP</h1>
-</header>
-
 <main>
 
     <!-- Page 1: Introduction to Structures in C -->
     <section>
+        <header>
+            <h1>Programming Concepts: OOP vs POP</h1>
+        </header>
+
         <h2>1. Introduction to Structures in C</h2>
         <h3>The Need for Structures</h3>
         <p>Variables sometimes influence each other’s values. A change in one may necessitate a corresponding change in another. Structures help group related variables together to manage this situation more effectively.</p>
@@ -185,11 +196,11 @@
         <p>Inheritance allows one class to inherit the properties and methods of another class, enabling reusability of code.</p>
     </section>
 
-</main>
+    <footer>
+        <p>Programming Concepts - OOP vs POP | &copy; 2025</p>
+    </footer>
 
-<footer>
-    <p>Programming Concepts - OOP vs POP | &copy; 2025</p>
-</footer>
+</main>
 
 </body>
 </html>
