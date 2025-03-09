@@ -1,1 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program 1 - POP Learning Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        pre {
+            background: #222;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: left;
+            overflow-x: auto;
+        }
+        .copy-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: none;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .copy-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Program 1: Arithmetic Operations</h1>
+        <p><strong>Description:</strong> This program demonstrates a basic implementation of arithmetic operations using switch-case.</p>
+        
+        <h2>Code:</h2>
+        <pre id="code">
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
 
+void main() {
+    int num1, num2, result;
+    float divresult;
+    char op;
+    
+    clrscr();
+    printf("Enter the operation to be done (+, -, *, /): \n");
+    scanf(" %c", &op);
+    printf("Enter the value of num1 and num2: \n");
+    scanf("%d%d", &num1, &num2);
+
+    switch(op) {
+        case '+': 
+            result = num1 + num2;
+            printf("Addition = %d\n", result);
+            break;
+        case '-': 
+            result = num1 - num2;
+            printf("Subtraction = %d\n", result);
+            break;
+        case '*': 
+            result = num1 * num2;
+            printf("Multiplication = %d\n", result);
+            break;
+        case '/': 
+            if (num2 != 0) {
+                divresult = num1 / (float)num2;
+                printf("Division = %.2f\n", divresult);
+            } else {
+                printf("Error: Division by zero is not allowed.\n");
+            }
+            break;
+        default: 
+            printf("Invalid Input, Try Again\n");
+    }
+    getch();
+}
+        </pre>
+        <button class="copy-btn" onclick="copyCode()">Copy Code</button>
+
+        <h2>Output:</h2>
+        <pre>
+First Run:
+Enter the operation to be done
++
+Enter the value of num1 and num2
+10
+20
+Addition=30
+
+Second Run:
+Enter the operation to be done
+-
+Enter the value of num1 and num2
+10
+20
+Subtraction=-10
+
+Third Run:
+Enter the operation to be done
+*
+Enter the value of num1 and num2
+20
+30
+Multiplication=600
+
+Fourth Run:
+Enter the operation to be done
+/
+Enter the value of num1 and num2
+40
+50
+Division=0.80
+
+Fifth Run:
+Enter the operation to be done
+@
+Enter the value of num1 and num2
+40
+50
+Invalid Input, Try Again
+        </pre>
+    </div>
+
+    <script>
+        function copyCode() {
+            const codeBlock = document.getElementById("code").innerText;
+            navigator.clipboard.writeText(codeBlock).then(() => {
+                alert("Code copied to clipboard!");
+            });
+        }
+    </script>
+</body>
+</html>
