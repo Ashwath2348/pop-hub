@@ -3,203 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programming Concepts - OOP vs POP</title>
+    <title>Generations of Computers</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
+            padding: 20px;
             background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
         }
         main {
-            width: 80%;
-            max-width: 1200px;
-            background-color: #fff;
+            max-width: 900px;
+            margin: auto;
+            background: white;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            border-radius: 8px;
-        }
-        section {
-            margin-bottom: 40px; /* Gap between sections */
-        }
-        h2 {
+        h1, h2 {
             color: #333;
         }
-        h3 {
+        h2 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+        p {
             color: #555;
-        }
-        p, ul, table {
-            margin-bottom: 20px; /* Gap between paragraphs and list items */
-        }
-        ul {
-            margin-left: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        table, th, td {
-            border: 1px solid #ccc;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #333;
-            color: white;
-            border-radius: 8px;
         }
     </style>
 </head>
 <body>
 
 <main>
-
-    <!-- Page 1: Introduction to Structures in C -->
-    <section>
-        <header>
-            <h1>Module 1:Introduction To C Programming</h1>
-        </header>
-
-        <h2>1. Introduction to Structures in C</h2>
-        <h3>The Need for Structures</h3>
-        <p>Variables sometimes influence each other’s values. A change in one may necessitate a corresponding change in another. Structures help group related variables together to manage this situation more effectively.</p>
-        <pre>
-        int d, m, y;  // day, month, year
-        </pre>
-        <p>Although these variables represent a single concept (a date), there is no mechanism to group them together in C. Consider a function <code>next_day()</code> to calculate the next day:</p>
-        <pre>
-        void next_day(int *, int *, int *);
-        </pre>
-        <p>Without structures, passing these variables together in a group is difficult, which might lead to incorrect data being passed to the function. Structures solve this problem by grouping these variables together.</p>
-
-        <h3>Why Does C Enable Us to Create Structures?</h3>
-        <p>C allows creating user-defined types (structures) to group variables together under a single name. This enhances data organization and safety.</p>
-        <pre>
-        struct date {
-            int d, m, y;
-        };
-        </pre>
-        <p>Now, a function like <code>next_day()</code> can take the address of the structure directly, avoiding mistakes in passing unrelated variables.</p>
-
-        <h3>Limitations of Structures</h3>
-        <ul>
-            <li>C structures can't contain functions, only data members.</li>
-            <li>Data is not secure and can be modified by any function.</li>
-            <li>Associated functions are not part of the structure itself, making it difficult to maintain integrity in larger applications.</li>
-        </ul>
-    </section>
-
-    <!-- Page 2: Procedure-Oriented Programming (POP) and Data Security -->
-    <section>
-        <h2>2. Issues of Procedure-Oriented Programming (POP) and Data Security</h2>
-        <h3>Issues of Procedure-Oriented Programming</h3>
-        <ul>
-            <li><strong>Data Security:</strong> In POP, data is not protected from modification by external functions. Functions and data are separate, so any function can access and modify global data.</li>
-            <li><strong>Accessing Data:</strong> Functions can share global data, leading to data being passed around freely and risking unintentional modifications.</li>
-            <li><strong>Lack of Control:</strong> There's no strict mechanism to control access to data, which makes it difficult to ensure that data remains consistent and secure.</li>
-        </ul>
-
-        <h3>How Object-Oriented Programming Solves Data Security Issues</h3>
-        <p>OOP solves this problem with the concept of data encapsulation. Data is hidden and can only be accessed through specific methods inside the object. The class controls access to its data, ensuring only authorized modifications.</p>
-    </section>
-
-    <!-- Page 3: Object-Oriented Programming (OOP) -->
-    <section>
-        <h2>3. What is Object-Oriented Programming (OOP)?</h2>
-        <p>OOP is a programming paradigm that models real-world problems using objects. Objects are instances of classes and contain both data (attributes) and functions (methods). OOP helps organize code better and enhances reuse and modularity.</p>
-
-        <h3>Salient Features of OOP and POP Comparison</h3>
-        <p><strong>Procedure-Oriented Programming (POP):</strong></p>
-        <ul>
-            <li>Focus on functions and procedures.</li>
-            <li>Programs are divided into functions that manipulate global data.</li>
-            <li>Follows a <em>Top-Down</em> approach in program design.</li>
-        </ul>
-
-        <p><strong>Object-Oriented Programming (OOP):</strong></p>
-        <ul>
-            <li>Focus on data and objects.</li>
-            <li>Programs are divided into objects that contain both data and methods.</li>
-            <li>Follows a <em>Bottom-Up</em> approach in program design.</li>
-        </ul>
-    </section>
-
-    <!-- Page 4: Features of OOP and POP -->
-    <section>
-        <h2>4. Differences Between Procedure-Oriented and Object-Oriented Techniques</h2>
-        <table>
-            <tr>
-                <th>Feature</th>
-                <th>Procedure-Oriented Programming (POP)</th>
-                <th>Object-Oriented Programming (OOP)</th>
-            </tr>
-            <tr>
-                <td>Program Structure</td>
-                <td>Divided into functions</td>
-                <td>Divided into objects</td>
-            </tr>
-            <tr>
-                <td>Focus</td>
-                <td>Functions and actions</td>
-                <td>Data and objects</td>
-            </tr>
-            <tr>
-                <td>Approach</td>
-                <td>Top-Down</td>
-                <td>Bottom-Up</td>
-            </tr>
-            <tr>
-                <td>Data Access</td>
-                <td>Data can move freely between functions</td>
-                <td>Data is encapsulated within objects</td>
-            </tr>
-            <tr>
-                <td>Data Security</td>
-                <td>Less secure</td>
-                <td>More secure (Data hiding)</td>
-            </tr>
-            <tr>
-                <td>Expansion</td>
-                <td>Difficult to add new data and functions</td>
-                <td>Easy to add new data and functions</td>
-            </tr>
-        </table>
-    </section>
-
-    <!-- Page 5: Characteristics/Features of OOP -->
-    <section>
-        <h2>5. Characteristics of Object-Oriented Programming (OOP)</h2>
-
-        <h3>i) Encapsulation</h3>
-        <p>Encapsulation combines data and functions into a single unit called a class. Data is hidden and can only be accessed through public methods.</p>
-
-        <h3>ii) Polymorphism</h3>
-        <p>Polymorphism allows one function to behave differently based on the object calling it. This can include function overloading or operator overloading.</p>
-
-        <h3>iii) Inheritance</h3>
-        <p>Inheritance allows one class to inherit the properties and methods of another class, enabling reusability of code.</p>
-    </section>
-
-    <footer>
-        <p>Programming Concepts - OOP vs POP | &copy; 2025</p>
-    </footer>
-
+    <h1>Generations of Computers</h1>
+    
+    <h2>1940 – 1956: First Generation – Vacuum Tubes</h2>
+    <p>These early computers used vacuum tubes as circuitry and magnetic drums for memory. They were enormous, consumed a lot of electricity, and generated significant heat. Input was based on punched cards and paper tape, with output via print-outs. Notable machines include UNIVAC and ENIAC.</p>
+    
+    <h2>1956 – 1963: Second Generation – Transistors</h2>
+    <p>The use of transistors replaced vacuum tubes, making computers smaller, faster, and more efficient. High-level programming languages like COBOL and FORTRAN were introduced. Computers began storing instructions in memory and were used in the atomic energy industry.</p>
+    
+    <h2>1964 – 1971: Third Generation – Integrated Circuits</h2>
+    <p>Transistors were miniaturized and placed on silicon chips, significantly improving speed and efficiency. Users interacted with computers using keyboards and monitors with an operating system. Time-sharing allowed multiple users to run programs simultaneously. Languages such as BASIC, C, C++, and Java emerged.</p>
+    
+    <h2>1972 – 2010: Fourth Generation – Microprocessors</h2>
+    <p>Microprocessors, pioneered by Intel's 4004 chip, integrated all computer components onto a single chip. Personal computers became widespread with IBM's first home computer (1981) and Apple's Macintosh (1984). The rise of networking and the Internet marked this era, alongside GUI, the mouse, and mobile devices.</p>
+    
+    <h2>2010 – Present: Fifth Generation – Artificial Intelligence</h2>
+    <p>AI-powered computers are under development, with advancements in voice recognition, parallel processing, and superconductors. Future trends include quantum computing, molecular technology, and self-learning systems capable of natural language processing.</p>
 </main>
 
 </body>
