@@ -49,100 +49,173 @@
         
         <h2>Code:</h2>
         <pre id="code">
-#include &lt;stdio.h&gt;
-#include &lt;conio.h&gt;
+1. Which programming needs do structures fulfill? Why does C language enable us to create structures? What are the
+limitations of structures?
+The Need for Structures
+Variables sometimes influence each other’s values. A change in the value of one may necessitate a corresponding adjustment in the
+value of another. It is, therefore, necessary to pass these variables together in a single group to functions. Structures enable us to do
+this. Take the example of date. A date can be represented in C by three different integer variables taken together.
+int d,m,y; //Here d, m, and y represent the day of the month, the month, and the year, respectively.
+Although these three variables are not grouped together in the code, they actually belong to the same group. The value of one variable
+may influence the value of the other two. In order to understand this clearly, consider a function next_day() that accepts the addresses
+of the three integers that represent a date and changes their values to represent the next day.
+void next_day(int *,int *,int *); //function to calculate the next day
+If d=31;m=12; y=1999; //31st December, 1999 and we call the function as next_day(&d,&m,&y); ‘d’ will become 1, ‘m’ will
+become 1, and ‘y’ will become 2000. A change in the value of one may change the value of the other two. But there is no language
+construct that actually places them in the same group. Thus, members of the wrong group may be accidentally sent to the function as
+given below:
+d1=28; m1=2; y1=1999; //28th February, 1999
+d2=19; m2=3; y2=1999; //19th March, 1999
+next_day(&d1,&m1,&y1); //OK
+next_day(&d1,&m2,&y2); //What? Incorrect set passed!
+There is nothing in the language itself that prevents the wrong set of variables from being sent to the function. Moreover, integer-type
+variables that are not meant to represent dates might also be sent to the function. The solution to this problem is to create a data type
+called date itself using structures.
+Why does C language enable us to create structures?
+Structure is a programming construct in C that allows us to put together variables that should be together.
+Library programmers use structures to create new data types. Application programs and other library programs use these new data
+types by declaring variables of this data type. A struct in C is a complex data type declaration that defines a physically grouped list of
+variables to be placed under one name in a block of memory, allowing the different variables to be accessed via a single variable or
+pointer. The struct can contain many other complex and simple data types in an association, so is a natural organizing type for records
+like the mixed data types. For example
+struct date { //a structure to represent dates
+int d, m, y;
+};
+Now, the next_day() function will accept the address of a variable of the structure date as a parameter. Accordingly, its prototype will
+be as follows:
+void next_day(struct date *);
+struct date d1;
+d1.d=28;
+d1.m=2;
+d1.y=1999;
+next_day(&d1);
+‘d1.d’, ‘d1.m’, and ‘d1.y’ will be correctly set to 1, 3, and 1999, respectively. Since the function takes the address of an entire
+structure variable as a parameter at a time, there is no chance of variables of the different groups being sent to the function.
+Limitations of Structures
+• In C structure can't contain functions means only data members are allowed
+• Associated functions that were designed by library programmer don’t have rights to work upon the data stored in structures.
+• They are not a part of structure definition itself because application program might modify the structure variables by some
+code inadvertently written in application program itself While distributing his/her application, application programmer can’t
+be sure that program would run successfully.
+• Data stored in structures is not secure and can be manipulated by any function/procedure. Therefore every new piece of code
+accessing structure variable will have to be inspected and tested again to ensure that it doesn’t corrupt the members of
+structure.
+2
+2. Discuss the issues of procedure oriented programming systems with respect of data security. If object oriented
+programming solves it then how?
+3. What is object oriented programming? Bring out the salient features of procedure oriented programming and object
+oriented programming. OR State important features of object oriented programming. Compare object oriented system with
+procedure oriented systems.
+4. List out the difference between procedure oriented and object oriented techniques. OR Compare/Differentiate between
+procedure oriented and object oriented programming systems.
+5. Explain the various characteristics /features of object oriented programming (OOP). OR Describe the following
+characteristics/features of object oriented programming: i) Encapsulation ii) Polymorphism iii) Inheritance
+Procedure oriented programming: In the procedure oriented approach, the problem is viewed as a sequence of things to be done
+such as reading, calculating and printing. The focus of procedure oriented programming is to break down a programming task into a
+collection of functions, variables and data structures. The primary focus is on functions. A number of functions are written to
+accomplish these tasks. Conventional programming using high level languages such as FORTRAN and C, is commonly known as
+procedure oriented programming (POP).
+Characteristics/Features of Procedure Oriented Programming System
+• Large programs are divided into smaller programs known as functions
+• Focus is on functions.
+• Functions can share global data
+• Data can move freely around the system from one function to other function. Data (contained in structure variables) is passed
+from one function to another to be read from or written into.
+• Functions are associated with the data but they are not a part of it. Instead they receive structure variables / their addresses and
+work upon them.
+• Employs top-down approach in program design.
+Issues/Disadvantages of Procedure Oriented Programming System
+• Data is not secure and can be manipulated by any function/procedure.
+• Associated functions that were designed by library programmer don’t have exclusive rights to work upon the data.
+• They are not a part of structure definition itself because application program might modify the structure variables by some code
+inadvertently written in application program itself.
+• While distributing the application, application programmer can’t be sure that program would run successfully.
+• Every new piece of code accessing structure variable will have to be inspected and tested again to ensure that it doesn’t corrupt
+the members of structure.
+• Compilers that implement procedure oriented programming systems don’t prevent unauthorized functions from accessing /
+manipulating the structure variables. Lack of data security of procedure oriented programs has led to Object Oriented
+Programming Systems
+How does object oriented programming solves the problem of data security?
+In order to solve the problem of data security, one of the most important feature provided by the object oriented systems is “data hiding”
+facility. OOP gives lots of importance to data. Programmer can hide the really important core data from external world using OOP
+method. A class is a feature in OOP which facilitates to pack together different data types along with different functions that manipulate
+these data members of class. Data members can be declared as private or public inside a class. To hide the data from external world, a
+programmer does it by declaring the data as private. Class allows to pack together data with its associated functions. In OOP we use
+another entity named ‘object’ to access both data and functions inside a class. We call data or function inside a class as ‘class
+member‘. A class member can be accessed from external world (outside the class) using an object of the class only!. This feature of
+data hiding is called as “Data Encapsulation“. Thus one of the major flaws of POP is solved in OOP. OOP ties the data closely to a
+particular class and its objects. There is no need of “global data types” as in POP and hence data will not flow freely around the
+program. This makes sure there will be no ‘accidental modification’ of critical data.
+Object oriented programming: OOP allows decomposition of a problem into a number entities called objects and then builds data and
+functions around these objects. The data of an object can be accessed only by the functions associated with that object. However,
+functions of one object can access the functions of other objects. Object oriented programming breaks down a programming task into
+objects that expose behavior (methods) and data (members or attributes) using interfaces.
+3
+Characteristics of Object Oriented Programming System
+• Emphasis is on data rather than procedures or functions.
+• Programs are divided into what are known as objects.
+• Data structures are designed such that they characterize the objects.
+• Functions that operate on the data are tied together in the data structure.
+• Data is hidden and cannot be accessed by external functions.
+• Objects may communicate with each other through functions.
+• New data and functions can be easily added whenever necessary.
+• Follows bottom-up approach in program design.
+Important features/concepts of OOPS
+• Object: Object is a collection of attributes/entities. Objects take up space in the memory. Objects are instances of classes. When a
+program is executed, the objects interact by sending messages to one another. Each object contain data and code to manipulate the
+data. Objects can interact without having to know details of each other’s data or code.
+• Class: Class is a collection of objects of similar type. Objects are variables of the type class. Once a class has been defined, we can
+create any number of objects belonging to that class. Eg: grapes bananas and orange are the member of class fruit. Example:
+Fruit orange; // Here object orange is an instance of class fruit.
+• Encapsulation: Combining data and functions into a single unit called class and the process is known as Encapsulation. Data
+encapsulation is important feature of a class. Class contains both data and functions. Data is not accessible from the outside world
+and only those function which are present in the class can access the data.
+• Data Hiding and Abstraction: The insulation of the data from direct access by the program is called data hiding. Hiding the
+complexity of program is called Abstraction and only essential features are represented. In short we can say that internal working
+is hidden.
+• Inheritance: it is the process by which object of one class acquire the properties or features of objects of another class. The concept
+of inheritance provide the idea of reusability means we can add additional features to an existing class without modifying it. This
+is possible by driving a new class from the existing one. The new class will have the combined features of both the classes
+Example: Sparrow is a part of the class flying bird which is again a part of the class bird.
+• Polymorphism: A Greek term means ability to take more than one form. An operation may exhibit different behaviors in
+different instances. The behavior depends upon the types of data used in the operation. Examples
+- Function overloading & Operator Overloading
+- Static & Dynamic Polymorphism
+• Message Passing: The process by which one object can interact with other object is called message passing.
+• Dynamic Binding: Refers to linking of function call with function definition is called binding and when it is take place at run
+time called dynamic binding.
+Difference between Procedure Oriented Programming (POP) & Object Oriented Programming (OOP)
+Procedure Oriented Programming (POP) Object Oriented Programming (OOP)
+Divided Into In POP, program is divided into small parts
+called functions.
+In OOP, program is divided into parts called objects.
+Importance In POP, Importance is not given to data but to
+functions as well as sequence of actions to be
+done.
+In OOP, Importance is given to the data rather than
+procedures or functions because it works as a real world.
+Approach POP follows Top Down approach. OOP follows Bottom Up approach.
+Access
+Specifiers
+POP does not have any access specifier. OOP has access specifiers named Public, Private, Protected,
+etc.
+Data Moving In POP, Data can move freely from function to
+function in the system.
+In OOP, objects can move and communicate with each
+other through member functions.
+Expansion To add new data and function in POP is not so
+easy.
+OOP provides an easy way to add new data and function.
+Data Access In POP, Most function uses Global data for
+sharing that can be accessed freely from function
+to function in the system.
+In OOP, data cannot move easily from function to function,
+it can be kept public or private so we can control the access
+of data.
+Data Hiding POP does not have any proper way for hiding
+data so it is less secure.
+OOP provides Data Hiding so provides more security.
+Overloading In POP, Overloading is not possible. In OOP, overloading is possible in the form of Function
+Overloading and Operator Overloading.
+Examples Example of POP are: C, VB, FORTRAN, Pascal. Example of OOP are: C++, JAVA, VB.NET, C#.NET
 
-void main() {
-    int num1, num2, result;
-    float divresult;
-    char op;
-    
-    clrscr();
-    printf("Enter the operation to be done (+, -, *, /): \n");
-    scanf(" %c", &op);
-    printf("Enter the value of num1 and num2: \n");
-    scanf("%d%d", &num1, &num2);
-
-    switch(op) {
-        case '+': 
-            result = num1 + num2;
-            printf("Addition = %d\n", result);
-            break;
-        case '-': 
-            result = num1 - num2;
-            printf("Subtraction = %d\n", result);
-            break;
-        case '*': 
-            result = num1 * num2;
-            printf("Multiplication = %d\n", result);
-            break;
-        case '/': 
-            if (num2 != 0) {
-                divresult = num1 / (float)num2;
-                printf("Division = %.2f\n", divresult);
-            } else {
-                printf("Error: Division by zero is not allowed.\n");
-            }
-            break;
-        default: 
-            printf("Invalid Input, Try Again\n");
-    }
-    getch();
-}
-        </pre>
-        <button class="copy-btn" onclick="copyCode()">Copy Code</button>
-
-        <h2>Output:</h2>
-        <pre>
-First Run:
-Enter the operation to be done
-+
-Enter the value of num1 and num2
-10
-20
-Addition=30
-
-Second Run:
-Enter the operation to be done
--
-Enter the value of num1 and num2
-10
-20
-Subtraction=-10
-
-Third Run:
-Enter the operation to be done
-*
-Enter the value of num1 and num2
-20
-30
-Multiplication=600
-
-Fourth Run:
-Enter the operation to be done
-/
-Enter the value of num1 and num2
-40
-50
-Division=0.80
-
-Fifth Run:
-Enter the operation to be done
-@
-Enter the value of num1 and num2
-40
-50
-Invalid Input, Try Again
-        </pre>
-    </div>
-
-    <script>
-        function copyCode() {
-            const codeBlock = document.getElementById("code").innerText;
-            navigator.clipboard.writeText(codeBlock).then(() => {
-                alert("Code copied to clipboard!");
-            });
-        }
-    </script>
-</body>
-</html>
