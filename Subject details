@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Compiler</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            max-width: 800px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2, h3 {
+            color: #333;
+        }
+        .subject-details {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        .subject-details p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 20px;
+            font-family: monospace;
+            font-size: 16px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Online Compiler</h2>
+
+        <!-- Subject Details Section -->
+        <div class="subject-details">
+            <h3>Subject Details</h3>
+            <p><strong>Subject Name:</strong> Introduction to Programming</p>
+            <p><strong>Subject Code:</strong> CS101</p>
+            <p><strong>Description:</strong> This course introduces students to the fundamental concepts of computer programming, including variables, control structures, and functions. Students will learn to write basic programs in JavaScript.</p>
+        </div>
+
+        <!-- Code Editor Section -->
+        <textarea id="codeInput" placeholder="Write your JavaScript code here..."></textarea>
+        <button onclick="runCode()">Run Code</button>
+        
+        <!-- Output Section -->
+        <h3>Output:</h3>
+        <pre id="output"></pre>
+    </div>
+
+    <script>
+        function runCode() {
+            const code = document.getElementById("codeInput").value;
+            const outputElement = document.getElementById("output");
+
+            try {
+                // Run the user's JavaScript code and capture any errors
+                const result = eval(code);
+                outputElement.textContent = result !== undefined ? result : 'Code executed successfully.';
+            } catch (error) {
+                outputElement.textContent = `Error: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>
