@@ -138,7 +138,7 @@ The product of two matrices:
 
     <script>
         function copyCode() {
-            var codeBlock = document.getElementById("code-block").innerText;
+            var codeBlock = document.getElementById("code-block").textContent.trim();
             navigator.clipboard.writeText(codeBlock).then(() => {
                 alert("Code copied to clipboard!");
             }).catch(err => {
