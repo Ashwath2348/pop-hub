@@ -50,89 +50,60 @@
         <h2>Code:</h2>
         <pre id="code">
 #include &lt;stdio.h&gt;
-#include &lt;conio.h&gt;
 
 void main() {
-    int num1, num2, result;
-    float divresult;
-    char op;
+    char opt;
+    float n1, n2, res;
     
-    clrscr();
-    printf("Enter the operation to be done (+, -, *, /): \n");
-    scanf(" %c", &op);
-    printf("Enter the value of num1 and num2: \n");
-    scanf("%d%d", &num1, &num2);
+    printf("Enter an operator (+, -, *, /): ");
+    scanf(" %c", &opt);
+    printf("Enter the first number: ");
+    scanf("%f", &n1);
+    printf("Enter the second number: ");
+    scanf("%f", &n2);
 
-    switch(op) {
-        case '+': 
-            result = num1 + num2;
-            printf("Addition = %d\n", result);
+    switch (opt) {
+        case '+':
+            res = n1 + n2;
+            printf("%f + %f = %f\n", n1, n2, res);
             break;
-        case '-': 
-            result = num1 - num2;
-            printf("Subtraction = %d\n", result);
+        case '-':
+            res = n1 - n2;
+            printf("%f - %f = %f\n", n1, n2, res);
             break;
-        case '*': 
-            result = num1 * num2;
-            printf("Multiplication = %d\n", result);
+        case '*':
+            res = n1 * n2;
+            printf("%f * %f = %f\n", n1, n2, res);
             break;
-        case '/': 
-            if (num2 != 0) {
-                divresult = num1 / (float)num2;
-                printf("Division = %.2f\n", divresult);
+        case '/':
+            if (n2 != 0) {
+                res = n1 / n2;
+                printf("%f / %f = %f\n", n1, n2, res);
             } else {
                 printf("Error: Division by zero is not allowed.\n");
             }
             break;
-        default: 
-            printf("Invalid Input, Try Again\n");
+        default:
+            printf("Invalid operator\n");
     }
-    getch();
 }
         </pre>
         <button class="copy-btn" onclick="copyCode()">Copy Code</button>
 
         <h2>Output:</h2>
         <pre>
-First Run:
-Enter the operation to be done
-+
-Enter the value of num1 and num2
-10
-20
-Addition=30
+Enter an operator (+, -, *, /): +
+Enter the first number: 5
+Enter the second number: 3
+5 + 3 = 8.000000
 
-Second Run:
-Enter the operation to be done
--
-Enter the value of num1 and num2
-10
-20
-Subtraction=-10
+Enter an operator (+, -, *, /): *
+Enter the first number: 5
+Enter the second number: 3
+5 * 3 = 15.000000
 
-Third Run:
-Enter the operation to be done
-*
-Enter the value of num1 and num2
-20
-30
-Multiplication=600
-
-Fourth Run:
-Enter the operation to be done
-/
-Enter the value of num1 and num2
-40
-50
-Division=0.80
-
-Fifth Run:
-Enter the operation to be done
-@
-Enter the value of num1 and num2
-40
-50
-Invalid Input, Try Again
+RESULT:
+Thus the program to simulate the simple calculator was executed successfully and output was verified.
         </pre>
     </div>
 
