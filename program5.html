@@ -40,6 +40,18 @@
         button:hover {
             background: #0056b3;
         }
+        .copy-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: none;
+            background: #28a745;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .copy-btn:hover {
+            background: #218838;
+        }
     </style>
 </head>
 <body>
@@ -48,21 +60,21 @@
         <p><strong>Description:</strong> This program demonstrates a basic implementation of binary search.</p>
         
         <h2>Code:</h2>
-        <pre>
+        <pre id="code">
 #include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
 
 int main() {
-    int n, a[100], i, key, high, low, mid, loc = -1;
+    int a[50], key, i, n , low, high, mid, found = 0;
 
-    printf("Enter the size of the array: ");
+    printf("\n Enter the number of elements in the array: ");
     scanf("%d", &n);
 
-    printf("Enter the elements of array in sorted order:\n");
-    for (i = 0; i < n; i++)
+    printf("\n Enter the elements of the array: ");
+    for(i = 0; i < n; i++) {
         scanf("%d", &a[i]);
+    }
 
-    printf("Enter the key element to be searched: ");
+    printf("\n Enter the key to be searched: \n");
     scanf("%d", &key);
 
     low = 0;
@@ -70,42 +82,45 @@ int main() {
 
     while (low <= high) {
         mid = (low + high) / 2;
-        
-        if (key == a[mid]) {
-            loc = mid + 1;
+
+        if (a[mid] == key) {
+            printf("\n %d is present at the position = %d", key, mid + 1);
+            found = 1;
             break;
-        } else if (key < a[mid]) {
-            high = mid - 1;
-        } else {
-            low = mid + 1;
         }
+
+        if (a[mid] > key)
+            high = mid - 1;
+        else
+            low = mid + 1;
     }
 
-    if (loc > 0)
-        printf("\nThe element %d is found at position %d\n", key, loc);
-    else
-        printf("\nThe search is unsuccessful\n");
+    if (!found)
+        printf("\n Key not found");
 
     return 0;
 }
         </pre>
+        <button class="copy-btn" onclick="copyCode()">Copy Code</button>
         
         <h2>Output:</h2>
         <pre>
-First Run:
-Enter the size of the array: 5
-Enter the elements of array in sorted order: 10 20 30 40 50
-Enter the key element to be searched: 40
-The element 40 is found at position 4
-
-Second Run:
-Enter the size of the array: 4
-Enter the elements of array in sorted order: 4 6 8 9
-Enter the key element to be searched: 2
-The search is unsuccessful
+Enter the number of elements in the array: 5
+Enter the elements of the array: 10 20 30 40 50
+Enter the key to be searched: 30
+30 is present at the position = 3
         </pre>
         
         <button onclick="window.location.href='index.html'">⬅ Back to Home</button>
     </div>
+    
+    <script>
+        function copyCode() {
+            const codeBlock = document.getElementById("code").innerText;
+            navigator.clipboard.writeText(codeBlock).then(() => {
+                alert("Code copied to clipboard!");
+            });
+        }
+    </script>
 </body>
 </html>
