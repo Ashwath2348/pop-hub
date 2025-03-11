@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program 8- POP Learning Hub</title>
+    <title>Program 8 - POP Learning Hub</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
@@ -28,6 +27,8 @@
             border-radius: 5px;
             text-align: left;
             overflow-x: auto;
+            white-space: pre-wrap;
+            position: relative;
         }
         button {
             margin-top: 20px;
@@ -41,67 +42,89 @@
         button:hover {
             background: #0056b3;
         }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #28a745;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        .copy-btn:hover {
+            background: #218838;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Program 8: SORT THE GIVEN SET OF N NUMBERS USING BUBBLE SORT.</h1>
-        <p><strong>Description:</strong> This program demonstrates a basic implementation of an array traversal.</p>
+        <p><strong>Description:</strong> This program demonstrates a basic implementation of Bubble Sort.</p>
         
         <h2>Code:</h2>
-        <pre>
+        <div style="position: relative;">
+            <button class="copy-btn" onclick="copyCode()">Copy Code</button>
+            <pre id="code-block">
 #include<stdio.h>
-#include<conio.h>
-void main()
-{
-int n,i,j,a[10],temp;
-clrscr();
-printf("Enter the no. of elements : \n");
-scanf("%d",&n);
-printf("Enter the array elements \n");
-for(i = 0 ; i < n ; i++)
-scanf("%d",&a[i]);
-printf("The original elements are \n");
-for(i = 0 ; i < n ; i++)
-printf("%d ",a[i]);
-for(i = 0 ; i < n-1 ; i++)
-{
-for(j = 0 ; j< (n-i)-1; j++)
-{
-if(a[j] > a[j+1])
-{
-temp = a[j];
-a[j] = a[j+1];
-a[j+1] = temp;
+int main()
+{    
+    int n, i, j, a[10], temp;
+    printf("Enter the no. of elements :\n");
+    scanf("%d", &n);
+    printf("Enter the array elements \n"); 
+    for(i = 0; i < n; i++)
+        scanf("%d", &a[i]); 
+    
+    printf("The original elements are \n"); 
+    for(i = 0; i < n; i++)
+        printf("%d ", a[i]);
+    
+    for(i = 0; i < n-1; i++) // Number of Passes
+    {
+        for(j = 0; j < n-i-1; j++) // Comparisons
+        {
+            if(a[j] > a[j+1])
+            {
+                temp = a[j];   
+                a[j] = a[j+1];    
+                a[j+1] = temp;
+            }
+        }
+    }
+    printf("\nThe Sorted elements are \n"); 
+    for(i = 0; i < n; i++)
+        printf("%d\t", a[i]); 
+    
+    return 0;
 }
-}
-}
-printf("\n The Sorted elements are \n");
-for(i = 0 ; i < n ; i++)
-printf("%d ",a[i]);
-getch();
-}
- </pre>
+            </pre>
+        </div>
         
         <h2>Output:</h2>
         <pre>
-            First Run:
-Enter the no. of elements : 5
-Enter the array elements
-30 10 50 20 40
-The original elements are
-30 10 50 20 40
-The Sorted elements are
-10 20 30 40 50
-Second Run:
-Enter the no. of elements : 6
-Enter the array elements
-6 5 4 3 2 1
-The original elements are
-6 5 4 3 2 1
-The Sorted elements are
-1 2 3 4 5 6
-            </pre>
+Enter the no. of elements: 5
+5 4 3 2 1
+The Sorted elements are 
+1 2 3 4 5
+        </pre>
         
         <button onclick="window.location.href='index.html'">⬅ Back to Home</button>
     </div>
+
+    <script>
+        function copyCode() {
+            var codeBlock = document.getElementById("code-block");
+            var tempTextArea = document.createElement("textarea");
+            tempTextArea.value = codeBlock.innerText;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempTextArea);
+            alert("Code copied to clipboard!");
+        }
+    </script>
+</body>
+</html>
