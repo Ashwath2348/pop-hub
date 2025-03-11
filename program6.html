@@ -138,14 +138,12 @@ The product of two matrices:
 
     <script>
         function copyCode() {
-            var codeBlock = document.getElementById("code-block");
-            var textArea = document.createElement("textarea");
-            textArea.value = codeBlock.innerText;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand("copy");
-            document.body.removeChild(textArea);
-            alert("Code copied to clipboard!");
+            var codeBlock = document.getElementById("code-block").innerText;
+            navigator.clipboard.writeText(codeBlock).then(() => {
+                alert("Code copied to clipboard!");
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
         }
     </script>
 </body>
