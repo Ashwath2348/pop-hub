@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program 7- SINE FUNCTION USING TAYLOR SERIES</title>
+    <title>Program 7 - SINE FUNCTION USING TAYLOR SERIES</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
@@ -111,12 +111,14 @@ The sine function of 90 using library function is 1.000
 
     <script>
         function copyCode() {
-            var codeBlock = document.getElementById("code-block").textContent.trim();
-            navigator.clipboard.writeText(codeBlock).then(() => {
-                alert("Code copied to clipboard!");
-            }).catch(err => {
-                console.error('Failed to copy: ', err);
-            });
+            var codeBlock = document.getElementById("code-block");
+            var tempTextArea = document.createElement("textarea");
+            tempTextArea.value = codeBlock.innerText;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempTextArea);
+            alert("Code copied to clipboard!");
         }
     </script>
 </body>
