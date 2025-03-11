@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program 1 - POP Learning Hub</title>
+    <title>Program 3 - POP Learning Hub</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
@@ -45,41 +45,41 @@
 <body>
     <div class="container">
         <h1>Program 3: Electricity Bill</h1>
-        <p><strong>Description:</strong> This program demonstrates a basic implementation of an array traversal.</p>
+        <p><strong>Description:</strong> This program calculates the electricity bill based on unit consumption.</p>
         
         <h2>Code:</h2>
         <pre>
-#include&lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
-void main()
+#include &lt;stdio.h&gt;
+void main ()
 {
-char name[10];
-float unit, amt;
-clrscr();
-printf("Enter your name and unit Consumed:");
-scanf("%s %f",name,&unit);
-if(unit<=200)
-amt=unit*0.80+100;
-else if((unit>200)&&(unit<=300))
-amt=200*0.80+((unit-200)*0.90)+100;
-else
-amt=200*0.80+100*0.90+((unit-300)*1)+100;
-if(amt>400)
-amt=1.15*amt;
-printf("Name: %s\n Unit=%f \n charge=%f ",name,unit,amt);
-getch();
+    char name[10];
+    float unit, metercharge = 100;
+    printf("Enter your name and unit Consumed:");
+    scanf("%s %f", name, &unit);
+
+    if (unit <= 200)
+        metercharge = metercharge + (unit * 0.80);
+    else if (unit > 200 && unit <= 300)
+        metercharge = metercharge + (200 * 0.80) + ((unit - 200) * 0.90);
+    else if (unit > 300)
+        metercharge = metercharge + (200 * 0.80) + (100 * 0.90) + ((unit - 300) * 1);
+
+    if (metercharge >= 400)
+        metercharge = metercharge + (metercharge * 0.15);
+    
+    printf("Name: %s\nNumber of unit consumed: %f\nMeter Charge: %f", name, unit, metercharge);
 }
-    </pre>
+        </pre>
         
         <h2>Output:</h2>
         <pre>
-            First Run:
-Enter your name and unit Consumed: Siri 52Name: Siri
-Unit=52 charge=141.600000Second Run:
-Enter your name and unit Consumed: Rajesh 460Name: Rajesh
-Unit=460 charge=586.500000
- </pre>
+Enter your name and unit Consumed: Satheesh 250
+Name: Satheesh
+Number of unit consumed: 250.000000 
+Meter Charge: 305.000000
+        </pre>
         
         <button onclick="window.location.href='index.html'">⬅ Back to Home</button>
     </div>
 </body>
+</html>
