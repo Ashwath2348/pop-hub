@@ -28,6 +28,7 @@
             text-align: left;
             overflow-x: auto;
             white-space: pre-wrap;
+            position: relative;
         }
         button {
             margin-top: 20px;
@@ -41,6 +42,21 @@
         button:hover {
             background: #0056b3;
         }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #28a745;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        .copy-btn:hover {
+            background: #218838;
+        }
     </style>
 </head>
 <body>
@@ -49,7 +65,9 @@
         <p><strong>Description:</strong> This program implements matrix multiplication and ensures that the rules of multiplication are validated.</p>
         
         <h2>Code:</h2>
-        <pre>
+        <div style="position: relative;">
+            <button class="copy-btn" onclick="copyCode()">Copy Code</button>
+            <pre id="code-block">
 #include<stdio.h>
 
 int main() {
@@ -97,7 +115,8 @@ int main() {
     }
     return 0;
 }
-        </pre>
+            </pre>
+        </div>
         
         <h2>Output:</h2>
         <pre>
@@ -116,5 +135,18 @@ The product of two matrices:
         
         <button onclick="window.location.href='index.html'">⬅ Back to Home</button>
     </div>
+
+    <script>
+        function copyCode() {
+            var codeBlock = document.getElementById("code-block");
+            var textArea = document.createElement("textarea");
+            textArea.value = codeBlock.innerText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textArea);
+            alert("Code copied to clipboard!");
+        }
+    </script>
 </body>
 </html>
