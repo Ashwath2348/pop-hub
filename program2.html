@@ -50,71 +50,57 @@
         <h2>Code:</h2>
         <pre id="code">
 #include &lt;stdio.h&gt;
-#include &lt;conio.h&gt;
 #include &lt;math.h&gt;
-#include &lt;stdlib.h&gt;
-
-void main() {
-    float a, b, c, root1, root2, realp, imagp, disc;
-    clrscr();
-    printf("\n Enter the value of coefficient a: ");
-    scanf("%f", &a);
-    if (a == 0) {
-        printf("\n Invalid input...Retry again");
-        exit(0);
+void main()
+{
+    float a, b, c;
+    float root1, root2;
+    float determinant, real, imaginary;
+    printf("Enter the Co-efficients of Quadratic Equation\n");
+    scanf("%f%f%f", &a, &b, &c);
+    determinant = b * b - 4 * a * c;
+    if (a == 0 && b == 0)
+    {
+        printf("INVALID INPUTS\n");
     }
-    printf(" Enter the value of coefficients b and c:\n ");
-    scanf("%f%f", &b, &c);
-    
-    disc = b * b - 4 * a * c; // compute discriminant
-    if (disc == 0) {
-        printf("The roots are real and equal\n");
-        root1 = root2 = -b / (2.0 * a);
-        printf(" Root1 = Root2 = %.2f\n", root1);
-    } else if (disc > 0) {
-        printf("The roots are real and distinct\n");
-        root1 = (-b + sqrt(disc)) / (2.0 * a);
-        root2 = (-b - sqrt(disc)) / (2.0 * a);
-        printf("Root1 = %.2f\n", root1);
-        printf("Root2 = %.2f\n", root2);
-    } else {
-        printf("The roots are complex\n");
-        realp = -b / (2.0 * a);
-        disc = -disc;
-        imagp = sqrt(disc) / (2.0 * a);
-        printf("Root1 = %.2f + i%.2f\n", realp, imagp);
-        printf("Root2 = %.2f - i%.2f\n", realp, imagp);
+    else if (a == 0)
+    {
+        printf("LINEAR EQUATION\n");
+        root1 = -c / b;
+        printf("ROOT=%f\n", root1);
     }
-    getch();
+    else if (determinant == 0)
+    {
+        printf("ROOTS ARE REAL AND EQUAL\n");
+        root1 = -b / (2 * a);
+        root2 = -b / (2 * a);
+        printf("Root1=%f\nRoot2=%f\n", root1, root2);
+    }
+    else if (determinant > 0)
+    {
+        printf("ROOTS ARE REAL AND DISTINCT\n");
+        root1 = (-b + sqrt(fabs(determinant))) / (2 * a);
+        root2 = (-b - sqrt(fabs(determinant))) / (2 * a);
+        printf("ROOT1=%f\nROOT2=%f\n", root1, root2);
+    }
+    else
+    {
+        printf("ROOTS ARE IMAGINARY\n");
+        real = -b / (2 * a);
+        imaginary = sqrt(fabs(determinant)) / (2 * a);
+        printf("ROOT1=%f+i%f\n", real, imaginary);
+        printf("ROOT2=%f-i%f\n", real, imaginary);
+    }
 }
         </pre>
         <button class="copy-btn" onclick="copyCode()">Copy Code</button>
 
         <h2>Output:</h2>
         <pre>
-First Run:
-Enter the value of coefficient a: 1
-Enter the value of coefficients b and c: 4 4
-The roots are real and equal
-Root1 = Root2 = -2.00
-
-Second Run:
-Enter the value of coefficient a: 1
-Enter the value of coefficients b and c: -7 10
-The roots are real and distinct
-Root1 = 5.00
-Root2 = 2.00
-
-Third Run:
-Enter the value of coefficient a: 2
-Enter the value of coefficients b and c: -3 6
-The roots are complex
-Root1 = 0.75 + i1.56
-Root2 = 0.75 - i1.56
-
-Fourth Run:
-Enter the value of coefficient a: 0
-Invalid input...Retry again
+Enter the Co-efficients of Quadratic Equation: 1 2 3
+ROOTS ARE IMAGINARY
+ROOT1=-1.000000+i1.414214
+ROOT2=-1.000000-i1.414214
         </pre>
     </div>
 
