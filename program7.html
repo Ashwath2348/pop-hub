@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program 1 - POP Learning Hub</title>
+    <title>Program 6 - IMPLEMENT MATRIX MULTIPLICATION</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
@@ -27,6 +27,8 @@
             border-radius: 5px;
             text-align: left;
             overflow-x: auto;
+            white-space: pre-wrap;
+            position: relative;
         }
         button {
             margin-top: 20px;
@@ -40,75 +42,102 @@
         button:hover {
             background: #0056b3;
         }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #28a745;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        .copy-btn:hover {
+            background: #218838;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Program 7: COMPUTE SIN(X)/COS(X) USING TAYLOR SERIES APPROXIMATION</h1>
-        <p><strong>Description:</strong> This program calculates the sine of an angle using a Taylor series approximation.</p>
+        <h1>Program 6: IMPLEMENT MATRIX MULTIPLICATION</h1>
+        <p><strong>Description:</strong> This program implements matrix multiplication and ensures that the rules of multiplication are validated.</p>
         
         <h2>Code:</h2>
-        <pre>
+        <div style="position: relative;">
+            <button class="copy-btn" onclick="copyCode()">Copy Code</button>
+            <pre id="code-block">
 #include &lt;stdio.h&gt;
-#include &lt;conio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;math.h&gt;
 
-int fact(int m) {
-    int i, f = 1;
-    for(i = 1; i <= m; i++) {
-        f = f * i;
+#define MAX 10
+
+int main() {
+    int a[MAX][MAX], b[MAX][MAX], c[MAX][MAX];
+    int m, n, p, q, i, j, k;
+
+    printf("Enter the size of first matrix (rows cols): ");
+    scanf("%d %d", &m, &n);
+
+    printf("Enter the size of second matrix (rows cols): ");
+    scanf("%d %d", &p, &q);
+
+    if (n != p) {
+        printf("Matrix multiplication is not possible! Number of columns of first matrix must equal number of rows of second matrix.\n");
+        return 1;
     }
-    return f;
-}
 
-void main() {
-    int x, n, i;
-    float rad, res, sum = 0;
-    clrscr();
-    printf("Enter degree\n");
-    scanf("%d", &x);
-    printf("Enter number of terms\n");
-    scanf("%d", &n);
-    rad = x * 3.14 / 180;
-    for(i = 1; i <= n; i += 2) {
-        if ((i - 1) % 4 == 0)
-            sum = sum + pow(rad, i) / fact(i);
-        else 
-            sum = sum - pow(rad, i) / fact(i);
+    printf("Enter the elements of first matrix (%dx%d):\n", m, n);
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < n; j++) {
+            scanf("%d", &a[i][j]);
+        }
     }
-    printf("Calculate sin(%d) = %f", x, sum);
-    printf("\nLibrary sin(%d) = %f", x, sin(rad));
-    getch();
+
+    printf("Enter the elements of second matrix (%dx%d):\n", p, q);
+    for (i = 0; i < p; i++) {
+        for (j = 0; j < q; j++) {
+            scanf("%d", &b[i][j]);
+        }
+    }
+
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < q; j++) {
+            c[i][j] = 0;
+        }
+    }
+
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < q; j++) {
+            for (k = 0; k < n; k++) {
+                c[i][j] += a[i][k] * b[k][j];
+            }
+        }
+    }
+
+    printf("\nThe product of the two matrices is:\n");
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < q; j++) {
+            printf("%4d ", c[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
 }
-        </pre>
-        <button onclick="copyCode()">Copy Code</button>
-
-        <h2>Output:</h2>
-        <pre>
-First Run:
-Enter degree
-30
-Enter number of terms
-5
-Calculate sin(30) = 0.499772
-Library sin(30) = 0.499770
-
-Second Run:
-Enter degree
-60
-Enter number of terms
-2
-Calculate sin(60) = 0.866029
-Library sin(60) = 0.865760
-        </pre>
+            </pre>
+        </div>
+        
+        <button onclick="window.location.href='index.html'">⬅ Back to Home</button>
     </div>
 
     <script>
         function copyCode() {
-            const codeBlock = document.querySelector("pre").innerText;
+            var codeBlock = document.getElementById("code-block").textContent.trim();
             navigator.clipboard.writeText(codeBlock).then(() => {
                 alert("Code copied to clipboard!");
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
             });
         }
     </script>
