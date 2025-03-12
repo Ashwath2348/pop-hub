@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program 10 - POP Learning Hub</title>
+    <title>Program 10 - Student Records</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #f4f4f4, #ddd);
+            background: #f4f4f4;
             padding: 20px;
             text-align: center;
         }
@@ -18,7 +18,7 @@
             background: white;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         pre {
             background: #222;
@@ -28,8 +28,8 @@
             text-align: left;
             overflow-x: auto;
         }
-        button {
-            margin-top: 20px;
+        .copy-btn {
+            margin-top: 10px;
             padding: 10px 20px;
             border: none;
             background: #007bff;
@@ -37,18 +37,18 @@
             cursor: pointer;
             border-radius: 5px;
         }
-        button:hover {
+        .copy-btn:hover {
             background: #0056b3;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Program 10: Student Marks - Compute Average and List Above/Below Average</h1>
-        <p><strong>Description:</strong> This program reads, writes, and computes the average marks of students, then lists those who scored above and below the average.</p>
+        <h1>Program 10: STUDENT RECORDS</h1>
+        <p><strong>Description:</strong> This program manages student records, calculates total marks, and determines students above and below average.</p>
         
         <h2>Code:</h2>
-        <pre>
+        <pre id="code">
 #include &lt;stdio.h&gt;
 
 struct student {
@@ -56,8 +56,8 @@ struct student {
     float m1, m2, m3, total;
 };
 
-void main() {
-    int i, j = 0, k = 0, n, aboveavg[10], belowavg[10];
+int main() {
+    int i, j, k, n, aboveavg[10], belowavg[10];
     float N, T = 0, AVG = 0;
     struct student s[10];
 
@@ -67,82 +67,84 @@ void main() {
 
     printf("Enter the details of students:\n");
     for (i = 0; i < n; i++) {
-        printf("Enter the details of student %d\n", i + 1);
+        printf("Enter the details of student %d:\n", i + 1);
         printf("Enter name: ");
         scanf("%s", s[i].name);
-        printf("Enter marks for three subjects: ");
+        printf("Enter marks (m1, m2, m3): ");
         scanf("%f%f%f", &s[i].m1, &s[i].m2, &s[i].m3);
         s[i].total = s[i].m1 + s[i].m2 + s[i].m3;
         T += s[i].total;
     }
-
     AVG = T / N;
 
     printf("\nDetails of Students:\n");
-    printf("Name\tm1\tm2\tm3\ttotal\n");
+    printf("Name\t m1\t m2\t m3\t total\n");
     for (i = 0; i < n; i++) {
         printf("%s\t%.2f\t%.2f\t%.2f\t%.2f\n", s[i].name, s[i].m1, s[i].m2, s[i].m3, s[i].total);
     }
-    printf("\nClass Average = %.2f\n", AVG);
+    printf("\nAVG = %.2f\n", AVG);
 
+    j = k = 0;
     for (i = 0; i < n; i++) {
         if (s[i].total > AVG) {
-            aboveavg[j] = i;
-            j++;
+            aboveavg[j++] = i;
         } else {
-            belowavg[k] = i;
-            k++;
+            belowavg[k++] = i;
         }
     }
 
-    printf("\nStudents scoring above average:\n");
+    printf("\nStudents scoring above avg:\n");
     for (i = 0; i < j; i++) {
         printf("%s %.2f\n", s[aboveavg[i]].name, s[aboveavg[i]].total);
     }
-
-    printf("\nStudents scoring below average:\n");
+    
+    printf("\nStudents scoring below avg:\n");
     for (i = 0; i < k; i++) {
         printf("%s %.2f\n", s[belowavg[i]].name, s[belowavg[i]].total);
     }
+    return 0;
 }
         </pre>
-        
+        <button class="copy-btn" onclick="copyCode()">Copy Code</button>
+
         <h2>Output:</h2>
         <pre>
 Enter number of students: 3
-
-Enter the details of students:
-
+Enter the details of students.
 Enter the details of student 1
 Enter name: Anil
-Enter marks for three subjects: 67 84 72
-
+Enter marks (m1, m2, m3): 67 84 72
 Enter the details of student 2
 Enter name: Sudhir
-Enter marks for three subjects: 76 55 68
-
+Enter marks (m1, m2, m3): 76 55 68
 Enter the details of student 3
 Enter name: Suresh
-Enter marks for three subjects: 58 79 92
+Enter marks (m1, m2, m3): 58 79 92
 
-Details of Students:
+Details of Students.
+Name    m1      m2      m3      total
+Anil    67.00   84.00   72.00   223.00
+Sudhir  76.00   55.00   68.00   199.00
+Suresh  58.00   79.00   92.00   229.00
 
-Name      m1      m2      m3      total
-Anil      67.00   84.00   72.00   223.00
-Sudhir    76.00   55.00   68.00   199.00
-Suresh    58.00   79.00   92.00   229.00
+AVG = 217.00
 
-Class Average = 217.00
-
-Students scoring above average:
+Students scoring above avg:
 Anil 223.00
 Suresh 229.00
 
-Students scoring below average:
+Students scoring below avg:
 Sudhir 199.00
         </pre>
-        
-        <button onclick="window.location.href='index.html'">⬅ Back to Home</button>
     </div>
+
+    <script>
+        function copyCode() {
+            const codeBlock = document.getElementById("code").innerText;
+            navigator.clipboard.writeText(codeBlock).then(() => {
+                alert("Code copied to clipboard!");
+            });
+        }
+    </script>
 </body>
-    </html>
+</html>
