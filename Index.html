@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POP Learning Hub - C Compiler</title>
+    <title>POP Learning Hub</title>
+    <link rel="icon" href="images/pop-logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <style>
+        /* General Styling */
         body {
             font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #f4f4f4, #ddd);
@@ -14,43 +16,32 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            text-align: center;
+            transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
         }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+        .content {
+            flex: 1;
         }
-        textarea {
-            width: 100%;
-            height: 200px;
-            font-family: monospace;
-            padding: 10px;
-            border-radius: 5px;
+
+        /* Header Animation */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out forwards;
         }
-        .btn {
-            margin-top: 10px;
-            padding: 10px 20px;
-            border: none;
-            background: #007bff;
-            color: white;
-            cursor: pointer;
-            border-radius: 5px;
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        .btn:hover {
-            background: #0056b3;
-        }
-        pre {
-            background: #222;
-            color: #fff;
-            padding: 10px;
-            border-radius: 5px;
-            text-align: left;
-            overflow-x: auto;
-        }
+
+        /* Navbar Styling */
         .navbar {
             display: flex;
             justify-content: center;
@@ -59,87 +50,152 @@
             background: #333;
             margin: 0;
         }
+
         .navbar li {
             position: relative;
         }
+
         .navbar li a {
             display: block;
             color: white;
             padding: 12px 16px;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.3s;
         }
+
         .navbar li a:hover {
-            color: #ff9d00;
+            color: #ff9d00; /* Subtle hover color */
+            transform: translateY(-2px);
         }
+
+        /* Underline on hover */
+        .navbar li a:hover::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: #ff9d00;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
         .dropdown-menu {
             display: none;
             position: absolute;
             background: #444;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
             list-style: none;
             padding: 0;
             min-width: 150px;
             z-index: 1000;
         }
+
+        .dropdown-menu li {
+            padding: 0;
+        }
+
         .dropdown-menu li a {
             color: white;
             display: block;
             padding: 10px;
             transition: background 0.3s;
         }
+
         .dropdown-menu li a:hover {
             background: #555;
         }
+
         .dropdown:hover .dropdown-menu {
             display: block;
         }
+
+        /* Content Section Animations */
+        .fade-in {
+            opacity: 0;
+            transform: scale(0.95);
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Footer Styling */
         footer {
             text-align: center;
             padding: 10px;
             background: #222;
             color: white;
         }
+
+        /* Content Section Styling */
+        .content-section {
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 10px;
+            background: #f0f0f0;
+        }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>POP Learning Hub</h1>
-        <nav>
-            <ul class="navbar">
-                <li><a href="#">Module 1</a></li>
-                <li><a href="#">Module 2</a></li>
-                <li><a href="#">Module 3</a></li>
-                <li><a href="#">Module 4</a></li>
-                <li><a href="#">Module 5</a></li>
-                <li class="dropdown">
-                    <a href="#">Programs & Outputs ▾</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="program1.html">Program 1</a></li>
-                        <li><a href="program2.html">Program 2</a></li>
-                        <li><a href="program3.html">Program 3</a></li>
-                        <li><a href="program4.html">Program 4</a></li>
-                        <li><a href="program5.html">Program 5</a></li>
-                        <li><a href="program6.html">Program 6</a></li>
-                        <li><a href="program7.html">Program 7</a></li>
-                        <li><a href="program8.html">Program 8</a></li>
-                        <li><a href="program9.html">Program 9</a></li>
-                        <li><a href="program10.html">Program 10</a></li>
-                        <li><a href="program11.html">Program 11</a></li>
-                        <li><a href="program12.html">Program 12</a></li>
-                    </ul>
-                </li>
-                <li><a href="#compiler">Online C Compiler</a></li>
-            </ul>
-        </nav>
+        <h1 class="fade-in-up">POP Learning Hub</h1>
+        <div class="nav-container">
+            <nav>
+                <ul class="navbar">
+            
+                    <li class="dropdown">
+                        <a href="#">Study Notes ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="module1">Module 1</a></li>
+                            <li><a href="https://vtucircle.com/principles-of-programming-using-c-bpops103-203/" target=_blank">module 2</a></li>
+                            <li><a href="module3">Module 3</a></li>
+                            <li><a href="module4">Module 4</a></li>
+                            <li><a href="module5">Module 5</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Programs & Outputs ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="program1.html">Program 1</a></li>
+                            <li><a href="program2.html">Program 2</a></li>
+                            <li><a href="program3.html">Program 3</a></li>
+                            <li><a href="program4.html">Program 4</a></li>
+                            <li><a href="program5.html">Program 5</a></li>
+                            <li><a href="program6.html">Program 6</a></li>
+                            <li><a href="program7.html">Program 7</a></li>
+                            <li><a href="program8.html">Program 8</a></li>
+                            <li><a href="program9.html">Program 9</a></li>
+                            <li><a href="program10.html">Program 10</a></li>
+                            <li><a href="program11.html">Program 11</a></li>
+                            <li><a href="program12.html">Program 12</a></li>
+                        </ul>
+                    </li>
+                   <li><a href="https://www.programiz.com/c-programming/online-compiler/" target="_blank">Try it Yourself</a></li>
+                    <li><a href="Subjectdetails.html">Subject Details</a></li>
+            </nav>
+        </div>
     </header>
 
-    <div class="container" id="compiler">
-        <h1>Online C Compiler</h1>
-        <p>Enter your C program below and click "Run" to execute.</p>
-        <textarea id="code" placeholder="Write your C code here..."></textarea>
-        <button class="btn" onclick="compileCode()">Run</button>
-        <h2>Output:</h2>
-        <pre id="output">Waiting for execution...</pre>
+    <div class="content">
+        <section id="notes" class="content-section fade-in">
+            <h2>Study Notes</h2>
+            <p>Comprehensive notes on POP concepts from the VTU syllabus.</p>
+        </section>
+
+        <section id="programs" class="content-section fade-in">
+            <h2>Programs & Outputs</h2>
+            <p>Collection of POP programs with explanations and outputs.</p>
+        </section>
     </div>
 
     <footer>
@@ -147,27 +203,24 @@
     </footer>
 
     <script>
-        function compileCode() {
-            const code = document.getElementById("code").value;
-            fetch("https://api.jdoodle.com/v1/execute", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    clientId: "YOUR_CLIENT_ID",
-                    clientSecret: "YOUR_CLIENT_SECRET",
-                    script: code,
-                    language: "c",
-                    versionIndex: "0"
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById("output").innerText = data.output;
-            })
-            .catch(error => {
-                document.getElementById("output").innerText = "Error: " + error;
-            });
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
         }
+
+        function openCodeCompiler() {
+            window.open('code-compiler.html', '_blank');
+        }
+
+        // Scroll animations trigger
+        window.addEventListener('scroll', () => {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(element => {
+                if (element.getBoundingClientRect().top < window.innerHeight) {
+                    element.classList.add('fade-in');
+                }
+            });
+        });
     </script>
+
 </body>
 </html>
