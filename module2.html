@@ -25,73 +25,136 @@
 <body>
     <h1>Module 2: Important Questions in C Programming</h1>
     
-    <h2>1. Explain If-Else Statement</h2>
+    <h2>1. Explain with syntax, flowchart, and example: if-else Statement</h2>
     <code>
-    int num = 10;
-    if (num > 0) {
-        printf("Number is positive\n");
+    if (condition) {
+        // Code to execute if condition is true
     } else {
-        printf("Number is not positive\n");
+        // Code to execute if condition is false
+    }
+    </code>
+    <code>
+    #include <stdio.h>
+    int main() {
+        int num = 10;
+        if (num > 0) {
+            printf("Number is positive\n");
+        } else {
+            printf("Number is not positive\n");
+        }
+        return 0;
     }
     </code>
     
-    <h2>2. Explain While Loop with an Example</h2>
+    <h2>2. Explain If-Else If Ladder</h2>
     <code>
-    int i = 1;
-    while (i <= 5) {
-        printf("%d ", i);
-        i++;
+    if (condition1) {
+        // Code if condition1 is true
+    } else if (condition2) {
+        // Code if condition2 is true
+    } else {
+        // Code if none of the conditions are true
     }
     </code>
     
-    <h2>3. Explain Do-While Loop with an Example</h2>
+    <h2>3. Explain While Loop</h2>
     <code>
-    int i = 1;
+    while (condition) {
+        // Code to execute
+    }
+    </code>
+    <code>
+    #include <stdio.h>
+    int main() {
+        int i = 1;
+        while (i <= 5) {
+            printf("%d ", i);
+            i++;
+        }
+        return 0;
+    }
+    </code>
+    
+    <h2>4. Explain Do-While Loop</h2>
+    <code>
     do {
-        printf("%d ", i);
-        i++;
-    } while (i <= 5);
+        // Code to execute
+    } while (condition);
     </code>
-    
-    <h2>4. Explain For Loop with an Example</h2>
     <code>
-    for (int i = 1; i <= 5; i++) {
-        printf("%d ", i);
+    #include <stdio.h>
+    int main() {
+        int i = 1;
+        do {
+            printf("%d ", i);
+            i++;
+        } while (i <= 5);
+        return 0;
     }
     </code>
     
-    <h2>5. What is a Switch-Case Statement? Explain with an Example</h2>
+    <h2>5. Explain For Loop</h2>
     <code>
-    int choice = 2;
-    switch (choice) {
-        case 1:
-            printf("Choice is 1\n");
+    for (initialization; condition; increment/decrement) {
+        // Code to execute
+    }
+    </code>
+    <code>
+    #include <stdio.h>
+    int main() {
+        for (int i = 1; i <= 5; i++) {
+            printf("%d ", i);
+        }
+        return 0;
+    }
+    </code>
+    
+    <h2>6. Explain Switch Statement</h2>
+    <code>
+    switch (expression) {
+        case value1:
+            // Code to execute
             break;
-        case 2:
-            printf("Choice is 2\n");
+        case value2:
+            // Code to execute
             break;
         default:
-            printf("Invalid choice\n");
+            // Default case
     }
     </code>
     
-    <h2>6. What are Break and Continue Statements? Explain with Examples</h2>
+    <h2>7. Explain Break and Continue Statements</h2>
     <code>
-    for (int i = 1; i <= 5; i++) {
-        if (i == 3)
-            continue;
-        printf("%d ", i);
+    #include <stdio.h>
+    int main() {
+        for (int i = 1; i <= 5; i++) {
+            if (i == 3)
+                continue;
+            printf("%d ", i);
+        }
+        return 0;
     }
     </code>
     
-    <h2>7. Explain Type Casting in C with an Example</h2>
+    <h2>8. List and Explain Operators in C</h2>
+    <ul>
+        <li>Arithmetic Operators: +, -, *, /, %</li>
+        <li>Relational Operators: >, <, >=, <=, ==, !=</li>
+        <li>Logical Operators: &&, ||, !</li>
+        <li>Bitwise Operators: &, |, ^, ~, <<, >></li>
+        <li>Assignment Operators: =, +=, -=, *=, /=</li>
+        <li>Increment/Decrement Operators: ++, --</li>
+        <li>Ternary Operator: condition ? expr1 : expr2</li>
+        <li>Special Operators: sizeof, ,, &, * (pointer operators)</li>
+    </ul>
+    
+    <h2>9. Explain Type Conversion and Casting</h2>
     <code>
-    float num = 10.6;
-    int newNum = (int) num;
-    printf("Casted value: %d\n", newNum);
+    float a = 5.5;
+    int b = (int) a;
     </code>
     
-    <h2>8. Write a C Program to Calculate the Area and Perimeter of a Rectangle</h2>
+    <h2>10. Write an Algorithm to Find the Area and Perimeter of a Rectangle</h2>
     <code>
     int length = 10, breadth = 5;
     int area = length * breadth;
@@ -99,38 +162,22 @@
     printf("Area: %d, Perimeter: %d\n", area, perimeter);
     </code>
     
-    <h2>9. Define an Algorithm and Write an Algorithm to Find the Factorial of a Number</h2>
+    <h2>11. Define Network, LAN, WAN, MAN, and Network Topology</h2>
+    <ul>
+        <li>Network: Connection of computers for data exchange</li>
+        <li>LAN (Local Area Network): Small area like offices, homes</li>
+        <li>WAN (Wide Area Network): Large-scale networks (e.g., Internet)</li>
+        <li>MAN (Metropolitan Area Network): City-wide networks</li>
+        <li>Network Topology: Arrangement of network components (Star, Ring, Bus)</li>
+    </ul>
+    
+    <h2>12. Explain the Basic Structure of a C Program</h2>
     <code>
-    int factorial(int n) {
-        if (n == 0) return 1;
-        return n * factorial(n - 1);
+    #include <stdio.h>
+    int main() {
+        printf("Hello, World!");
+        return 0;
     }
     </code>
-    
-    <h2>10. Explain the Different Types of Operators in C</h2>
-    <ul>
-        <li>Arithmetic Operators: +, -, *, /, %</li>
-        <li>Relational Operators: ==, !=, >, <, >=, <=</li>
-        <li>Logical Operators: &&, ||, !</li>
-        <li>Bitwise Operators: &, |, ^, ~, <<, >></li>
-        <li>Assignment Operators: =, +=, -=, *=, /=</li>
-    </ul>
-    
-    <h2>11. Write a C Program to Check if a Number is Even or Odd</h2>
-    <code>
-    int num = 10;
-    if (num % 2 == 0)
-        printf("Even\n");
-    else
-        printf("Odd\n");
-    </code>
-    
-    <h2>12. What are the Different Data Types in C? Explain with Examples</h2>
-    <ul>
-        <li>int - Integer values (e.g., int a = 10;)</li>
-        <li>float - Decimal values (e.g., float pi = 3.14;)</li>
-        <li>char - Single character (e.g., char ch = 'A';)</li>
-        <li>double - Double-precision floating-point numbers</li>
-    </ul>
 </body>
 </html>
