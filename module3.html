@@ -1,1 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 3: C Programming Concepts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 5px;
+            border-radius: 5px;
+            display: block;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>Module 3: Important Questions in C Programming</h1>
+    
+    <h2>1. What is an Array? Mention different types of arrays. How is a 2D array represented in memory?</h2>
+    <p>An array is a collection of elements of the same data type stored in contiguous memory locations.</p>
+    <p>Types of arrays include:</p>
+    <ul>
+        <li>One-Dimensional Array: A linear list of elements.</li>
+        <li>Two-Dimensional Array: A table of elements, often visualized as rows and columns.</li>
+        <li>Multi-Dimensional Array: Arrays with more than two dimensions.</li>
+    </ul>
+    <p>A 2D array is stored in row-major order in C. Example:</p>
+    <code>
+    int matrix[2][3] = {
+        {1, 2, 3},
+        {4, 5, 6}
+    };
+    </code>
+    
+    <h2>2. Differentiate between Call by Value and Call by Reference</h2>
+    <h3>Call by Value:</h3>
+    <code>
+    void increment(int a) {
+        a = a + 1;
+    }
+    int main() {
+        int x = 5;
+        increment(x);
+        // x remains 5
+    }
+    </code>
+    <h3>Call by Reference:</h3>
+    <code>
+    void increment(int *a) {
+        *a = *a + 1;
+    }
+    int main() {
+        int x = 5;
+        increment(&x);
+        // x becomes 6
+    }
+    </code>
+    
+    <h2>3. Representation of One-Dimensional Integer Array</h2>
+    <p>A one-dimensional integer array is stored in contiguous memory locations. Example:</p>
+    <code>
+    int arr[5] = {1, 2, 3, 4, 5};
+    </code>
+    
+    <h2>4. Elements of User-Defined Functions</h2>
+    <ul>
+        <li>Function Declaration</li>
+        <li>Function Definition</li>
+        <li>Function Call</li>
+    </ul>
+    <code>
+    int add(int, int);
+    int add(int a, int b) {
+        return a + b;
+    }
+    int result = add(3, 4);
+    </code>
+    
+    <h2>5. Actual and Formal Parameters</h2>
+    <code>
+    int add(int a, int b) {
+        return a + b;
+    }
+    int main() {
+        int x = 5, y = 3;
+        int sum = add(x, y);
+    }
+    </code>
+    
+    <h2>6. C Program to Find Factorial Using Recursion</h2>
+    <code>
+    #include <stdio.h>
+    int factorial(int n) {
+        if (n == 0)
+            return 1;
+        else
+            return n * factorial(n - 1);
+    }
+    int main() {
+        int num = 5;
+        printf("Factorial of %d is %d\n", num, factorial(num));
+        return 0;
+    }
+    </code>
+    
+    <h2>7. C Program to Find GCD and LCM</h2>
+    <code>
+    #include <stdio.h>
+    int gcd(int a, int b) {
+        if (b == 0)
+            return a;
+        return gcd(b, a % b);
+    }
+    int lcm(int a, int b) {
+        return (a * b) / gcd(a, b);
+    }
+    int main() {
+        int num1 = 12, num2 = 18;
+        printf("GCD of %d and %d is %d\n", num1, num2, gcd(num1, num2));
+        printf("LCM of %d and %d is %d\n", num1, num2, lcm(num1, num2));
+        return 0;
+    }
+    </code>
+    
+    <h2>8. Explain Recursion and Fibonacci Series Program</h2>
+    <p>Recursion is a programming technique where a function calls itself to solve smaller instances of the same problem.</p>
+    <code>
+    #include <stdio.h>
+    int fibonacci(int n) {
+        if (n <= 1)
+            return n;
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+    int main() {
+        int n = 10;
+        for (int i = 0; i < n; i++) {
+            printf("%d ", fibonacci(i));
+        }
+        return 0;
+    }
+    </code>
+</body>
+</html>
 
