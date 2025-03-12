@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program 12 - Copy a Text File to Another</title>
+    <title>Program 12 - File Handling</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #f4f4f4, #ddd);
+            background: #f4f4f4;
             padding: 20px;
             text-align: center;
         }
@@ -18,7 +18,7 @@
             background: white;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         pre {
             background: #222;
@@ -27,10 +27,9 @@
             border-radius: 5px;
             text-align: left;
             overflow-x: auto;
-            white-space: pre-wrap;
         }
-        button {
-            margin-top: 20px;
+        .copy-btn {
+            margin-top: 10px;
             padding: 10px 20px;
             border: none;
             background: #007bff;
@@ -38,75 +37,63 @@
             cursor: pointer;
             border-radius: 5px;
         }
-        button:hover {
+        .copy-btn:hover {
             background: #0056b3;
-        }
-        .section {
-            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Program 12: Copy a Text File to Another</h1>
-        <p><strong>Description:</strong> This program reads a file and copies its contents to another file.</p>
+        <h1>Program 12: FILE HANDLING</h1>
+        <p><strong>Description:</strong> This program copies the contents of one file to another.</p>
         
-        <!-- Code Section -->
-        <div class="section">
-            <h2>Program Code:</h2>
-            <pre>
+        <h2>Code:</h2>
+        <pre id="code">
 #include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt; // For exit()
+#include &lt;stdlib.h&gt;
   
-int main()
-{
+int main() {
     FILE *fptr1, *fptr2;
     char filename[100], c;
   
-    printf("Enter the filename to open for reading: \n");
+    printf("Enter the filename to open for reading \n");
     scanf("%s", filename);
   
-    // Open file for reading
+    // Open one file for reading
     fptr1 = fopen(filename, "r");
-    if (fptr1 == NULL)
-    {
+    if (fptr1 == NULL) {
         printf("Cannot open file %s \n", filename);
         exit(0);
     }
   
-    printf("Enter the filename to open for writing: \n");
+    printf("Enter the filename to open for writing \n");
     scanf("%s", filename);
   
-    // Open file for writing
+    // Open another file for writing
     fptr2 = fopen(filename, "w");
-    if (fptr2 == NULL)
-    {
+    if (fptr2 == NULL) {
         printf("Cannot open file %s \n", filename);
-        fclose(fptr1);
         exit(0);
     }
   
-    // Read and copy contents
+    // Read contents from file
     c = fgetc(fptr1);
-    while (c != EOF)
-    {
+    while (c != EOF) {
         fputc(c, fptr2);
         c = fgetc(fptr1);
     }
   
-    printf("\nContents copied to %s\n", filename);
+    printf("\nContents copied to %s", filename);
   
     fclose(fptr1);
     fclose(fptr2);
     return 0;
 }
-            </pre>
-        </div>
+        </pre>
+        <button class="copy-btn" onclick="copyCode()">Copy Code</button>
 
-        <!-- Output Section -->
-        <div class="section">
-            <h2>Expected Output:</h2>
-            <pre>
+        <h2>Output:</h2>
+        <pre>
 Enter the filename to open for reading: OLD.TXT
 Enter the filename to open for writing: NEW.TXT
 
@@ -117,10 +104,16 @@ WELCOME TO C PROGRAMMING
 
 NEW.TXT
 WELCOME TO C PROGRAMMING
-            </pre>
-        </div>
-        
-        <button onclick="window.location.href='index.html'">⬅ Back to Home</button>
+        </pre>
     </div>
+
+    <script>
+        function copyCode() {
+            const codeBlock = document.getElementById("code").innerText;
+            navigator.clipboard.writeText(codeBlock).then(() => {
+                alert("Code copied to clipboard!");
+            });
+        }
+    </script>
 </body>
 </html>
