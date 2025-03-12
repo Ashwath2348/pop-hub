@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program 11 - POP Learning Hub</title>
+    <title>Program 11 - Statistical Calculations</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #f4f4f4, #ddd);
+            background: #f4f4f4;
             padding: 20px;
             text-align: center;
         }
@@ -18,7 +18,7 @@
             background: white;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         pre {
             background: #222;
@@ -27,10 +27,9 @@
             border-radius: 5px;
             text-align: left;
             overflow-x: auto;
-            white-space: pre-wrap;
         }
-        button {
-            margin-top: 20px;
+        .copy-btn {
+            margin-top: 10px;
             padding: 10px 20px;
             border: none;
             background: #007bff;
@@ -38,23 +37,18 @@
             cursor: pointer;
             border-radius: 5px;
         }
-        button:hover {
+        .copy-btn:hover {
             background: #0056b3;
-        }
-        .section {
-            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Program 11: Compute Sum, Mean, and Standard Deviation Using Pointers</h1>
-        <p><strong>Description:</strong> This program computes the sum, mean, and standard deviation of an array using pointers.</p>
+        <h1>Program 11: STATISTICAL CALCULATIONS</h1>
+        <p><strong>Description:</strong> This program calculates the sum, mean, and standard deviation of an array of numbers.</p>
         
-        <!-- Code Section -->
-        <div class="section">
-            <h2>Program Code:</h2>
-            <pre>
+        <h2>Code:</h2>
+        <pre id="code">
 #include &lt;stdio.h&gt;
 #include &lt;math.h&gt;
 
@@ -71,50 +65,47 @@ int main() {
     }
 
     ptr = a;
-
-    // Compute sum
     for (i = 0; i < n; i++) {
         sum += *ptr;
         ptr++;
     }
-
+    
     mean = sum / n;
-
     ptr = a;
-
-    // Compute standard deviation
     for (i = 0; i < n; i++) {
         sumstd += pow((*ptr - mean), 2);
         ptr++;
     }
-
+    
     std = sqrt(sumstd / n);
-
+    
     printf("Sum = %.3f\n", sum);
     printf("Mean = %.3f\n", mean);
-    printf("Standard Deviation = %.3f\n", std);
-
+    printf("Standard deviation = %.3f\n", std);
+    
     return 0;
 }
-            </pre>
-        </div>
+        </pre>
+        <button class="copy-btn" onclick="copyCode()">Copy Code</button>
 
-        <!-- Output Section -->
-        <div class="section">
-            <h2>Expected Output:</h2>
-            <pre>
+        <h2>Output:</h2>
+        <pre>
 Enter the number of elements: 5
-
-Enter the array elements:
-1 5 9 6 7
+Enter the array elements: 1 5 9 6 7
 
 Sum = 28.000
 Mean = 5.600
-Standard Deviation = 2.059
-            </pre>
-        </div>
-        
-        <button onclick="window.location.href='index.html'">⬅ Back to Home</button>
+Standard deviation = 2.059
+        </pre>
     </div>
+
+    <script>
+        function copyCode() {
+            const codeBlock = document.getElementById("code").innerText;
+            navigator.clipboard.writeText(codeBlock).then(() => {
+                alert("Code copied to clipboard!");
+            });
+        }
+    </script>
 </body>
-    </html>
+</html>
