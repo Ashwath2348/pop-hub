@@ -1,33 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>Module 2: C Programming</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 2: C Programming Concepts</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
-            text-align: center;
+            line-height: 1.6;
         }
-
-        iframe {
-            width: 80%;
-            height: 800px;
-            border: none;
+        h1, h2 {
+            color: #333;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 5px;
+            border-radius: 5px;
+            display: block;
+            white-space: pre-wrap;
         }
     </style>
 </head>
-
 <body>
-    <h1>Module 2: Managing Input, Output, Branching and Looping</h1>
-    <p>Explore the detailed content of C Programming's Module 2 below:</p>
-
-    <!-- Embedding the PDF document -->
-    <iframe src="BPOPS103_Mod2.pdf"></iframe>
-
-    <p>If the PDF does not load, <a href="BPOPS103_Mod2.pdf" download>click here to download</a>.</p>
-    <p>Alternatively, you can access the module via Google Drive: <a href="https://drive.google.com/file/d/1gMwnDSRHLrONzhgFPzLLkIy_n6AfHJuZ/view?pli=1" target="_blank">Click here</a>.</p>
+    <h1>Module 2: Important Questions in C Programming</h1>
+    
+    <h2>1. Explain If-Else Statement</h2>
+    <code>
+    int num = 10;
+    if (num > 0) {
+        printf("Number is positive\n");
+    } else {
+        printf("Number is not positive\n");
+    }
+    </code>
+    
+    <h2>2. Explain While Loop with an Example</h2>
+    <code>
+    int i = 1;
+    while (i <= 5) {
+        printf("%d ", i);
+        i++;
+    }
+    </code>
+    
+    <h2>3. Explain Do-While Loop with an Example</h2>
+    <code>
+    int i = 1;
+    do {
+        printf("%d ", i);
+        i++;
+    } while (i <= 5);
+    </code>
+    
+    <h2>4. Explain For Loop with an Example</h2>
+    <code>
+    for (int i = 1; i <= 5; i++) {
+        printf("%d ", i);
+    }
+    </code>
+    
+    <h2>5. What is a Switch-Case Statement? Explain with an Example</h2>
+    <code>
+    int choice = 2;
+    switch (choice) {
+        case 1:
+            printf("Choice is 1\n");
+            break;
+        case 2:
+            printf("Choice is 2\n");
+            break;
+        default:
+            printf("Invalid choice\n");
+    }
+    </code>
+    
+    <h2>6. What are Break and Continue Statements? Explain with Examples</h2>
+    <code>
+    for (int i = 1; i <= 5; i++) {
+        if (i == 3)
+            continue;
+        printf("%d ", i);
+    }
+    </code>
+    
+    <h2>7. Explain Type Casting in C with an Example</h2>
+    <code>
+    float num = 10.6;
+    int newNum = (int) num;
+    printf("Casted value: %d\n", newNum);
+    </code>
+    
+    <h2>8. Write a C Program to Calculate the Area and Perimeter of a Rectangle</h2>
+    <code>
+    int length = 10, breadth = 5;
+    int area = length * breadth;
+    int perimeter = 2 * (length + breadth);
+    printf("Area: %d, Perimeter: %d\n", area, perimeter);
+    </code>
+    
+    <h2>9. Define an Algorithm and Write an Algorithm to Find the Factorial of a Number</h2>
+    <code>
+    int factorial(int n) {
+        if (n == 0) return 1;
+        return n * factorial(n - 1);
+    }
+    </code>
+    
+    <h2>10. Explain the Different Types of Operators in C</h2>
+    <ul>
+        <li>Arithmetic Operators: +, -, *, /, %</li>
+        <li>Relational Operators: ==, !=, >, <, >=, <=</li>
+        <li>Logical Operators: &&, ||, !</li>
+        <li>Bitwise Operators: &, |, ^, ~, <<, >></li>
+        <li>Assignment Operators: =, +=, -=, *=, /=</li>
+    </ul>
+    
+    <h2>11. Write a C Program to Check if a Number is Even or Odd</h2>
+    <code>
+    int num = 10;
+    if (num % 2 == 0)
+        printf("Even\n");
+    else
+        printf("Odd\n");
+    </code>
+    
+    <h2>12. What are the Different Data Types in C? Explain with Examples</h2>
+    <ul>
+        <li>int - Integer values (e.g., int a = 10;)</li>
+        <li>float - Decimal values (e.g., float pi = 3.14;)</li>
+        <li>char - Single character (e.g., char ch = 'A';)</li>
+        <li>double - Double-precision floating-point numbers</li>
+    </ul>
 </body>
-
 </html>
