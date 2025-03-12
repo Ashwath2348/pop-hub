@@ -68,21 +68,24 @@
         <div style="position: relative;">
             <button class="copy-btn" onclick="copyCode()">Copy Code</button>
             <pre id="code-block">
-#include<stdio.h>
+#include &lt;stdio.h&gt;
+
 int main()
 {    
     int n, i, j, a[10], temp;
-    printf("Enter the no. of elements :\n");
+    
+    printf("Enter the number of elements:\n");
     scanf("%d", &n);
-    printf("Enter the array elements \n"); 
+    
+    printf("Enter the array elements:\n");
     for(i = 0; i < n; i++)
         scanf("%d", &a[i]); 
     
-    printf("The original elements are \n"); 
+    printf("The original elements are:\n");
     for(i = 0; i < n; i++)
         printf("%d ", a[i]);
-    
-    for(i = 0; i < n-1; i++) // Number of Passes
+
+    for(i = 0; i < n-1; i++) // Number of passes
     {
         for(j = 0; j < n-i-1; j++) // Comparisons
         {
@@ -94,7 +97,8 @@ int main()
             }
         }
     }
-    printf("\nThe Sorted elements are \n"); 
+
+    printf("\nThe sorted elements are:\n"); 
     for(i = 0; i < n; i++)
         printf("%d\t", a[i]); 
     
@@ -105,9 +109,9 @@ int main()
         
         <h2>Output:</h2>
         <pre>
-Enter the no. of elements: 5
+Enter the number of elements: 5
 5 4 3 2 1
-The Sorted elements are 
+The sorted elements are:
 1 2 3 4 5
         </pre>
         
@@ -116,9 +120,9 @@ The Sorted elements are
 
     <script>
         function copyCode() {
-            var codeBlock = document.getElementById("code-block");
+            var codeBlock = document.getElementById("code-block").innerText;
             var tempTextArea = document.createElement("textarea");
-            tempTextArea.value = codeBlock.innerText;
+            tempTextArea.value = codeBlock;
             document.body.appendChild(tempTextArea);
             tempTextArea.select();
             document.execCommand("copy");
@@ -127,4 +131,4 @@ The Sorted elements are
         }
     </script>
 </body>
-</html>
+    </html>
