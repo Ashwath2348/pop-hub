@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #f4f4f4, #ddd);
+            background: #f4f4f4;
             padding: 20px;
             text-align: center;
         }
@@ -18,7 +18,7 @@
             background: white;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         pre {
             background: #222;
@@ -27,11 +27,9 @@
             border-radius: 5px;
             text-align: left;
             overflow-x: auto;
-            white-space: pre-wrap;
-            position: relative;
         }
-        button {
-            margin-top: 20px;
+        .copy-btn {
+            margin-top: 10px;
             padding: 10px 20px;
             border: none;
             background: #007bff;
@@ -39,86 +37,63 @@
             cursor: pointer;
             border-radius: 5px;
         }
-        button:hover {
-            background: #0056b3;
-        }
-        .copy-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #28a745;
-            border: none;
-            color: white;
-            padding: 5px 10px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 12px;
-        }
         .copy-btn:hover {
-            background: #218838;
+            background: #0056b3;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Program 7: SINE FUNCTION USING TAYLOR SERIES</h1>
-        <p><strong>Description:</strong> This program calculates sine using the Taylor series.</p>
+        <p><strong>Description:</strong> This program calculates the sine of a given angle using the Taylor series expansion.</p>
         
         <h2>Code:</h2>
-        <div style="position: relative;">
-            <button class="copy-btn" onclick="copyCode()">Copy Code</button>
-            <pre id="code-block">
+        <pre id="code">
 #include &lt;stdio.h&gt;
 #include &lt;math.h&gt;
 
 int main() {
     int i, degree;
     float x, sum = 0, term, n;
-
+    
     printf("Enter the value of degree: ");
     scanf("%d", &degree);
-    printf("Enter the limit up to which the Taylor's series is to be calculated: ");
+    printf("Enter the limit up to which the Taylor series is to be calculated: ");
     scanf("%f", &n);
     
     x = degree * (3.1416 / 180);
     term = x;
     sum = term;
-
+    
     for (i = 3; i <= n; i += 2) {
         term = -term * x * x / ((i - 1) * i);
-        sum += term;
+        sum = sum + term;
     }
-
+    
     printf("The sine of %d is %.3f\n", degree, sum);
     printf("The sine function of %d using library function is %.3f\n", degree, sin(x));
     
     return 0;
 }
-            </pre>
-        </div>
-        
+        </pre>
+        <button class="copy-btn" onclick="copyCode()">Copy Code</button>
+
         <h2>Output:</h2>
         <pre>
 Enter the value of degree: 90
-Enter the limit up to which the Taylor's series is to be calculated: 10
+Enter the limit up to which the Taylor series is to be calculated: 10
 
 The sine of 90 is 1.000
 The sine function of 90 using library function is 1.000
         </pre>
-        
-        <button onclick="window.location.href='index.html'">⬅ Back to Home</button>
     </div>
 
     <script>
         function copyCode() {
-            var codeBlock = document.getElementById("code-block");
-            var tempTextArea = document.createElement("textarea");
-            tempTextArea.value = codeBlock.innerText;
-            document.body.appendChild(tempTextArea);
-            tempTextArea.select();
-            document.execCommand("copy");
-            document.body.removeChild(tempTextArea);
-            alert("Code copied to clipboard!");
+            const codeBlock = document.getElementById("code").innerText;
+            navigator.clipboard.writeText(codeBlock).then(() => {
+                alert("Code copied to clipboard!");
+            });
         }
     </script>
 </body>
