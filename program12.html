@@ -1,11 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program 1 - WRITE A C PROGRAM TO COPY A TEXT FILE TO ANOTHER, READ BOTH THE INPUT
-FILE NAME AND TARGET FILE NAME</title>
+    <title>Program 12 - Copy a Text File to Another</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
@@ -29,6 +27,7 @@ FILE NAME AND TARGET FILE NAME</title>
             border-radius: 5px;
             text-align: left;
             overflow-x: auto;
+            white-space: pre-wrap;
         }
         button {
             margin-top: 20px;
@@ -42,70 +41,84 @@ FILE NAME AND TARGET FILE NAME</title>
         button:hover {
             background: #0056b3;
         }
+        .section {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Program 12:WRITE A C PROGRAM TO COPY A TEXT FILE TO ANOTHER, READ BOTH THE INPUT
-FILE NAME AND TARGET FILE NAME. </h1>
-        <p><strong>Description:</strong> This program demonstrates a basic implementation of an array traversal.</p>
+        <h1>Program 12: Copy a Text File to Another</h1>
+        <p><strong>Description:</strong> This program reads a file and copies its contents to another file.</p>
         
-        <h2>Code:</h2>
-        <pre>
-#include <stdio.h>
-#include <stdlib.h>
-#include <conio.h>
-void main()
+        <!-- Code Section -->
+        <div class="section">
+            <h2>Program Code:</h2>
+            <pre>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt; // For exit()
+  
+int main()
 {
-FILE *fptr1, *fptr2;
-char ch, fname1[20], fname2[20];
-clrscr();
-printf("\n\n Copy a file in another name :\n");
-printf(" \n");
-printf(" Input the source file name : ");
-scanf("%s",fname1);
-fptr1=fopen(fname1, "r");
-if(fptr1==NULL)
-{
-printf(" File does not found or error in opening.!!");
-exit(1);
+    FILE *fptr1, *fptr2;
+    char filename[100], c;
+  
+    printf("Enter the filename to open for reading: \n");
+    scanf("%s", filename);
+  
+    // Open file for reading
+    fptr1 = fopen(filename, "r");
+    if (fptr1 == NULL)
+    {
+        printf("Cannot open file %s \n", filename);
+        exit(0);
+    }
+  
+    printf("Enter the filename to open for writing: \n");
+    scanf("%s", filename);
+  
+    // Open file for writing
+    fptr2 = fopen(filename, "w");
+    if (fptr2 == NULL)
+    {
+        printf("Cannot open file %s \n", filename);
+        fclose(fptr1);
+        exit(0);
+    }
+  
+    // Read and copy contents
+    c = fgetc(fptr1);
+    while (c != EOF)
+    {
+        fputc(c, fptr2);
+        c = fgetc(fptr1);
+    }
+  
+    printf("\nContents copied to %s\n", filename);
+  
+    fclose(fptr1);
+    fclose(fptr2);
+    return 0;
 }
-printf(" Input the new file name : ");
-scanf("%s",fname2);
-fptr2=fopen(fname2, "w");
-if(fptr2==NULL)
-{
-printf(" File does not found or error in opening.!!");
-fclose(fptr1);
-exit(2);
-}
-while(1)
-{
-ch=fgetc(fptr1);
-if(ch==EOF)
-{
-break;
-}
-else
-{
-fputc(ch, fptr2);
-}
-}
-printf(" The file %s copied successfully in the file %s. \n\n",fname1,fname2);
-fclose(fptr1);
-fclose(fptr2);
-getchar();
-}
-     </pre>
-        
-        <h2>Output:</h2>
-        <pre>
-            OUTPUT:
-Copy a file in another name :
-Input the source file name : test.txt
-Input the new file name : test1.txt
-The file test.txt copied successfully in the file test1.txt.
-             </pre>
+            </pre>
+        </div>
+
+        <!-- Output Section -->
+        <div class="section">
+            <h2>Expected Output:</h2>
+            <pre>
+Enter the filename to open for reading: OLD.TXT
+Enter the filename to open for writing: NEW.TXT
+
+Contents copied to NEW.TXT
+
+OLD.TXT
+WELCOME TO C PROGRAMMING
+
+NEW.TXT
+WELCOME TO C PROGRAMMING
+            </pre>
+        </div>
         
         <button onclick="window.location.href='index.html'">⬅ Back to Home</button>
     </div>
