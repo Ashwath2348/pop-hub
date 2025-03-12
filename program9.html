@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program 9 - POP Learning Hub</title>
+    <title>Program 8 - POP Learning Hub</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #f4f4f4, #ddd);
+            background: #f4f4f4;
             padding: 20px;
             text-align: center;
         }
@@ -18,7 +18,7 @@
             background: white;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         pre {
             background: #222;
@@ -28,8 +28,8 @@
             text-align: left;
             overflow-x: auto;
         }
-        button {
-            margin-top: 20px;
+        .copy-btn {
+            margin-top: 10px;
             padding: 10px 20px;
             border: none;
             background: #007bff;
@@ -37,23 +37,23 @@
             cursor: pointer;
             border-radius: 5px;
         }
-        button:hover {
+        .copy-btn:hover {
             background: #0056b3;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Program 9: String Operations - Compare, Concatenate, Length</h1>
-        <p><strong>Description:</strong> This program implements string operations like length calculation, comparison, and concatenation using functions.</p>
+        <h1>Program 9: STRING OPERATIONS</h1>
+        <p><strong>Description:</strong> This program performs basic string operations such as length calculation, comparison, and concatenation.</p>
         
         <h2>Code:</h2>
-        <pre>
+        <pre id="code">
 #include &lt;stdio.h&gt;
 
 int my_strlen(char str[]) {
     int i = 0;
-    while (str[i] != '\0') 
+    while (str[i] != '\0')
         i++;
     return i;
 }
@@ -61,7 +61,7 @@ int my_strlen(char str[]) {
 int my_strcmp(char str1[], char str2[]) {
     int i = 0;
     while (str1[i] == str2[i]) {
-        if (str1[i] == '\0') 
+        if (str1[i] == '\0')
             break;
         i++;
     }
@@ -70,23 +70,23 @@ int my_strcmp(char str1[], char str2[]) {
 
 void my_strcat(char str1[], char str2[]) {
     int i = 0, j = 0;
-    while (str1[i] != '\0') 
+    while (str1[i] != '\0')
         i++;
     while (str2[j] != '\0') {
         str1[i++] = str2[j++];
     }
     str1[i] = '\0';
-    printf("Concatenated string = %s\n", str1);
+    printf("Concatenated string = %s", str1);
 }
 
-void main() {
+int main() {
     char str1[20] = "COMPUTER";
     char str2[20] = "PROGRAMMING";
     int res1, res2;
-
+    
     res1 = my_strlen(str1);
     printf("The length of the string1 = %d\n", res1);
-
+    
     res2 = my_strcmp(str1, str2);
     if (res2 == 0)
         printf("%s is equal to %s\n", str1, str2);
@@ -94,19 +94,29 @@ void main() {
         printf("%s is greater than %s\n", str1, str2);
     else
         printf("%s is less than %s\n", str1, str2);
-
+    
     my_strcat(str1, str2);
+    
+    return 0;
 }
         </pre>
-        
+        <button class="copy-btn" onclick="copyCode()">Copy Code</button>
+
         <h2>Output:</h2>
         <pre>
 The length of the string1 = 8
 COMPUTER is less than PROGRAMMING
 Concatenated string = COMPUTERPROGRAMMING
         </pre>
-        
-        <button onclick="window.location.href='index.html'">⬅ Back to Home</button>
     </div>
+
+    <script>
+        function copyCode() {
+            const codeBlock = document.getElementById("code").innerText;
+            navigator.clipboard.writeText(codeBlock).then(() => {
+                alert("Code copied to clipboard!");
+            });
+        }
+    </script>
 </body>
 </html>
