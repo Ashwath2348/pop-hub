@@ -21,13 +21,13 @@ app.post('/compile', (req, res) => {
     fs.writeFileSync(filePath, code, 'utf8');
 
     // Compile the C code using gcc
-    exec(`gcc ${filePath} -o output && ./output`, (error, stdout, stderr) => {
-        if (error) {
-            return res.status(500).send({ error: stderr || error.message });
-        }
-        res.send({ result: stdout });
-    });
-});
+    function compileC() {
+    const code = document.getElementById("editor").value;
+    const encodedCode = encodeURIComponent(code);
+    const programizUrl = `https://www.programiz.com/c-programming/online-compiler/?code=${encodedCode}`;
+    
+    window.open(programizUrl, "_blank");
+    }
 
 // Start the server
 app.listen(3000, () => {
