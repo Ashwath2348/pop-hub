@@ -30,6 +30,7 @@
             font-family: monospace;
             padding: 10px;
             border-radius: 5px;
+            border: 1px solid #ccc;
         }
         .btn {
             margin-top: 10px;
@@ -138,29 +139,227 @@
             </ul>
         </nav>
     </header>
+
+    <!-- About Section -->
     <section class="about">
         <div class="container">
-<h2>About POP Learning Hub</h2>
-<p>Welcome to POP Learning Hub, your ultimate resource for learning C programming. 
-We provide structured study notes, coding examples, and an online compiler to help 
-you master C programming with ease.</p>
-<p>Our mission is to make learning interactive and accessible to everyone. Whether 
-you're a beginner or an experienced programmer, you'll find valuable resources 
-here to enhance your coding skills.</p>
-</div>
-</section>
+            <h2>About POP Learning Hub</h2>
+            <p>Welcome to POP Learning Hub, your ultimate resource for learning C programming. 
+            We provide structured study notes, coding examples, and an online compiler to help 
+            you master C programming with ease.</p>
+            <p>Our mission is to make learning interactive and accessible to everyone. Whether 
+            you're a beginner or an experienced programmer, you'll find valuable resources 
+            here to enhance your coding skills.</p>
+        </div>
+    </section>
 
+    <!-- C Compiler Section -->
+    <section class="compiler">
+        <div class="container">
+            <h2>Online C Compiler</h2>
+            <textarea id="code" placeholder="Write your C code here..."></textarea>
+            <button class="btn" onclick="compileCode()">Run Code</button>
+            <pre id="output">Output will be shown here...</pre>
+        </div>
+    </section>
 
-
-
-
-
-
-
-    
-
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 POP Learning Hub</p>
+        <p>© 2025 POP LEARNING HUB</p>
+    </footer>
+
+    <script>
+        function compileCode() {
+            const code = document.getElementById("code").value;
+            fetch("https://api.jdoodle.com/v1/execute", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    clientId: "YOUR_CLIENT_ID",
+                    clientSecret: "YOUR_CLIENT_SECRET",
+                    script: code,
+                    language: "c",
+                    versionIndex: "0"
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("output").innerText = data.output;
+            })
+            .catch(error => {
+                document.getElementById("output").innerText = "Error: " + error;
+            });
+        }
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POP Learning Hub - C Compiler</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f4f4f4, #ddd);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            font-family: monospace;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: none;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+        pre {
+            background: #222;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: left;
+            overflow-x: auto;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            background: #333;
+            margin: 0;
+        }
+        .navbar li {
+            position: relative;
+        }
+        .navbar li a {
+            display: block;
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .navbar li a:hover {
+            color: #ff9d00;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background: #444;
+            list-style: none;
+            padding: 0;
+            min-width: 150px;
+            z-index: 1000;
+        }
+        .dropdown-menu li a {
+            color: white;
+            display: block;
+            padding: 10px;
+            transition: background 0.3s;
+        }
+        .dropdown-menu li a:hover {
+            background: #555;
+        }
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #222;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>POP Learning Hub</h1>
+        <nav>
+            <ul class="navbar">
+                <li class="dropdown">
+                    <a href="#">Study Notes ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="module1.html">Module 1</a></li>
+                        <li><a href="module2.html">Module 2</a></li>
+                        <li><a href="module3.html">Module 3</a></li>
+                        <li><a href="module4.html">Module 4</a></li>
+                        <li><a href="module5.html">Module 5</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Programs & Outputs ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="program1.html">Program 1</a></li>
+                        <li><a href="program2.html">Program 2</a></li>
+                        <li><a href="program3.html">Program 3</a></li>
+                        <li><a href="program4.html">Program 4</a></li>
+                        <li><a href="program5.html">Program 5</a></li>
+                        <li><a href="program6.html">Program 6</a></li>
+                        <li><a href="program7.html">Program 7</a></li>
+                        <li><a href="program8.html">Program 8</a></li>
+                        <li><a href="program9.html">Program 9</a></li>
+                        <li><a href="program10.html">Program 10</a></li>
+                        <li><a href="program11.html">Program 11</a></li>
+                        <li><a href="program12.html">Program 12</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://www.programiz.com/c-programming/online-compiler/">Online C Compiler</a></li>
+                <li><a href="subjectdetails.html">Subject Details</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <h2>About POP Learning Hub</h2>
+            <p>Welcome to POP Learning Hub, your ultimate resource for learning C programming. 
+            We provide structured study notes, coding examples, and an online compiler to help 
+            you master C programming with ease.</p>
+            <p>Our mission is to make learning interactive and accessible to everyone. Whether 
+            you're a beginner or an experienced programmer, you'll find valuable resources 
+            here to enhance your coding skills.</p>
+        </div>
+    </section>
+
+    <!-- C Compiler Section -->
+    <section class="compiler">
+        <div class="container">
+            <h2>Online C Compiler</h2>
+            <textarea id="code" placeholder="Write your C code here..."></textarea>
+            <button class="btn" onclick="compileCode()">Run Code</button>
+            <pre id="output">Output will be shown here...</pre>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 POP LEARNING HUB</p>
     </footer>
 
     <script>
