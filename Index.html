@@ -166,15 +166,24 @@
                     <li><strong>Beginner-Friendly:</strong> Designed for students, beginners, and programming enthusiasts.</li>
                     <li><strong>100% Free:</strong> Access all resources without any cost!</li>
                 </ul>
-                 <h3>What You’ll Learn</h3>
+                <h3>What You’ll Learn</h3>
                 <p>Our platform covers essential topics such as:</p>
                 <ul style="text-align: left; max-width: 700px; margin: auto;">
                     <li>Basic Syntax and Structure of C</li>
                     <li>Variables, Data Types, and Operators</li>
                     <li>Control Statements (Loops & Conditionals)</li>
                     <li>Functions and Pointers</li>
-                   
+                </ul>
+            </div>
+        </section>
 
+        <!-- Code Section for Compilation -->
+        <section>
+            <div class="container">
+                <h2>C Compiler</h2>
+                <textarea id="code" placeholder="Write your C code here..."></textarea>
+                <button class="btn" onclick="compileCode()">Compile Code</button>
+                <pre id="output"></pre>
             </div>
         </section>
     </main>
@@ -187,12 +196,21 @@
     <script>
         function compileCode() {
             const code = document.getElementById("code").value;
+            const clientId = "YOUR_CLIENT_ID";  // Replace with your JDoodle client ID
+            const clientSecret = "YOUR_CLIENT_SECRET";  // Replace with your JDoodle client secret
+
+            // Check if code is empty
+            if (!code.trim()) {
+                document.getElementById("output").innerText = "Please enter some C code to compile.";
+                return;
+            }
+
             fetch("https://api.jdoodle.com/v1/execute", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    clientId: "YOUR_CLIENT_ID",
-                    clientSecret: "YOUR_CLIENT_SECRET",
+                    clientId: clientId,
+                    clientSecret: clientSecret,
                     script: code,
                     language: "c",
                     versionIndex: "0"
@@ -200,10 +218,14 @@
             })
             .then(response => response.json())
             .then(data => {
-                document.getElementById("output").innerText = data.output;
+                if (data.output) {
+                    document.getElementById("output").innerText = data.output;
+                } else {
+                    document.getElementById("output").innerText = "Error occurred: " + data.error;
+                }
             })
             .catch(error => {
-                document.getElementById("output").innerText = "Error: " + error;
+                document.getElementById("output").innerText = "Error: " + error.message;
             });
         }
     </script>
